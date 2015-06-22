@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
   karma = require('karma').server,
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 var configFile = config.dirname + '/karma.conf.js';

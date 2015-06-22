@@ -2,7 +2,7 @@ var gulp = require('gulp'),
   extend = require('extend'),
   gulpInject = require('gulp-inject'),
   preprocess = require('gulp-preprocess'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 function injectIndex() {

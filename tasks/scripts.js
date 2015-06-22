@@ -6,7 +6,7 @@ var gulp = require('gulp'),
   ngFilesort = require('gulp-angular-filesort'),
   concat = require('gulp-concat'),
   uglify = require('gulp-uglify'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 var scriptsFile = 'scripts.js';

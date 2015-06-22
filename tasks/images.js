@@ -2,7 +2,7 @@ var gulp = require('gulp'),
   newer = require('gulp-newer'),
   imagemin = require('gulp-imagemin'),
   flatten = require('gulp-flatten'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 gulp.task('images', function() {

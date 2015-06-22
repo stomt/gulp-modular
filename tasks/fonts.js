@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
   bowerFiles = require('main-bower-files'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 var fontsFilter = {

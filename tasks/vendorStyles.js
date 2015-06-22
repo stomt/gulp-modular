@@ -4,7 +4,7 @@ var gulp = require('gulp'),
   newer = require('gulp-newer'),
   concat = require('gulp-concat'),
   minifyCSS = require('gulp-minify-css'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 var vendorFile = 'vendor.css';

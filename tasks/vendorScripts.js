@@ -5,7 +5,7 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   gulpif = require('gulp-if'),
   uglify = require('gulp-uglify'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 var vendorFile = 'vendor.js';

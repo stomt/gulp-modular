@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
   connect = require('gulp-connect'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 gulp.task('reload', function() {

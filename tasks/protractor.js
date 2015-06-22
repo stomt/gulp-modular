@@ -2,7 +2,7 @@ var gulp = require('gulp'),
   connect = require('gulp-connect'),
   protractor = require('gulp-protractor').protractor,
   exit = require('gulp-exit'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 gulp.task('protractor', function(done) {

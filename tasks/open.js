@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
   open = require('gulp-open'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 var options = {

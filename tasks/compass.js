@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
   compass = require('gulp-compass'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 gulp.task('compass', function(done) {

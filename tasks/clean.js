@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
   del = require('del'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 // remove build (erase dist folder recursively)

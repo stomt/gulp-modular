@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
   ngConstant = require('gulp-ng-constant'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 // JAVASCRIPT PROCESSING

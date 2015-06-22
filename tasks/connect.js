@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
   connect = require('gulp-connect'),
   history = require('connect-history-api-fallback'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 gulp.task('connect', ['build'], function() {

@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-  config = require('../gulp_config');
+  config = require('../../gulp_config');
 
 
 gulp.task('statics', function() {
