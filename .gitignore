@@ -4,3 +4,6 @@
 # JetBrains IDE project files
 .idea/
 *.iml
+
+# node modules directory
+node_modules/
