@@ -1,5 +1,7 @@
 var gulp = require('gulp'),
   bowerFiles = require('main-bower-files'),
+  gulpif = require('gulp-if'),
+  debug = require('gulp-debug'),
   sourceMaps = require('gulp-sourcemaps'),
   newer = require('gulp-newer'),
   concat = require('gulp-concat'),
@@ -14,6 +16,7 @@ var cssFilter = {
 
 gulp.task('vendorStyles', ['bower:install', 'bower:prune'], function() {
   return gulp.src(bowerFiles(cssFilter))
+    .pipe(gulpif(config.debug, debug()))
     .pipe(sourceMaps.init())
     .pipe(newer(config.dist.css + vendorFile))
     .pipe(concat(vendorFile))
