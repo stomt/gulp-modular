@@ -9,20 +9,25 @@ var gulp = require('gulp'),
   config = require('../../gulp_config');
 
 
+var isFirstRun = true;
 var vendorFile = 'vendor.css';
 var cssFilter = {
   filter: /\.css$/i
 };
 
-gulp.task('vendorStyles', ['bower:install', 'bower:prune'], function() {
-  return gulp.src(bowerFiles(cssFilter))
+gulp.task('vendorStyles', ['bower:install', 'bower:prune'], function(done) {
+  gulp.src(bowerFiles(cssFilter))
     .pipe(gulpif(config.debug, debug()))
     .pipe(sourceMaps.init())
-    .pipe(newer(config.dist.css + vendorFile))
+    .pipe(gulpif(isFirstRun, newer(config.dist.css + vendorFile)))
     .pipe(concat(vendorFile))
     .pipe(minifyCSS({
       keepSpecialComments: 0
     }))
     .pipe(sourceMaps.write(config.sourceMapsPath))
     .pipe(gulp.dest(config.dist.css));
+
+  isFirstRun = false;
+
+  done();
 });

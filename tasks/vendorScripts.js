@@ -9,18 +9,23 @@ var gulp = require('gulp'),
   config = require('../../gulp_config');
 
 
+var isFirstRun = true;
 var vendorFile = 'vendor.js';
 var jsFilter = {
   filter: /\.js$/i
 };
 
-gulp.task('vendorScripts', ['bower:install', 'bower:prune'], function() {
-  return gulp.src(bowerFiles(jsFilter))
+gulp.task('vendorScripts', ['bower:install', 'bower:prune'], function(done) {
+  gulp.src(bowerFiles(jsFilter))
     .pipe(gulpif(config.debug, debug()))
     .pipe(sourceMaps.init())
-    .pipe(newer(config.dist.js + vendorFile))
+    .pipe(gulpif(isFirstRun, newer(config.dist.js + vendorFile)))
     .pipe(concat(vendorFile))
     .pipe(gulpif(config.production, uglify()))
     .pipe(sourceMaps.write(config.sourcemapPath))
     .pipe(gulp.dest(config.dist.js));
+
+  isFirstRun = false;
+
+  done();
 });

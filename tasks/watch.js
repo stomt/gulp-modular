@@ -10,6 +10,7 @@ gulp.task('watch', ['build'], function() {
   gulp.watch(config.app.scssAll, ['compass']);
   gulp.watch(config.app.config, ['config']);
   gulp.watch(config.app.js, ['scripts']);
+  gulp.watch(config.bowerjson, ['vendorScripts', 'vendorStyles', 'fonts']);
   // watch any change in dist folder; reload immediately in case of detected change
   gulp.watch(config.bases.dist + '**', ['reload']);
 });
