@@ -1,12 +1,12 @@
-var gulp = require('gulp'),
-  bowerFiles = require('main-bower-files'),
+'use strict';
+
+var bowerFiles = require('main-bower-files'),
   gulpif = require('gulp-if'),
   debug = require('gulp-debug'),
   sourceMaps = require('gulp-sourcemaps'),
   newer = require('gulp-newer'),
   concat = require('gulp-concat'),
-  uglify = require('gulp-uglify'),
-  config = require('../../gulp_config');
+  uglify = require('gulp-uglify');
 
 
 var isFirstRun = true;
@@ -15,17 +15,19 @@ var jsFilter = {
   filter: /\.js$/i
 };
 
-gulp.task('vendorScripts', ['bower:install', 'bower:prune'], function(done) {
-  gulp.src(bowerFiles(jsFilter))
-    .pipe(gulpif(config.debug, debug()))
-    .pipe(sourceMaps.init())
-    .pipe(gulpif(isFirstRun, newer(config.dist.js + vendorFile)))
-    .pipe(concat(vendorFile))
-    .pipe(gulpif(config.production, uglify()))
-    .pipe(sourceMaps.write(config.sourcemapPath))
-    .pipe(gulp.dest(config.dist.js));
+module.exports = function(gulp, dest, sourceMapPath, production, debugFlag) {
+  gulp.task('vendorScripts', ['bower:install', 'bower:prune'], function(done) {
+    gulp.src(bowerFiles(jsFilter))
+      .pipe(gulpif(debugFlag, debug()))
+      .pipe(sourceMaps.init())
+      .pipe(gulpif(isFirstRun, newer(dest + vendorFile)))
+      .pipe(concat(vendorFile))
+      .pipe(gulpif(production, uglify()))
+      .pipe(sourceMaps.write(sourceMapPath))
+      .pipe(gulp.dest(dest));
 
-  isFirstRun = false;
+    isFirstRun = false;
 
-  done();
-});
+    done();
+  });
+};

@@ -1,9 +1,11 @@
-var gulp = require('gulp'),
-  connect = require('gulp-connect'),
-  config = require('../../gulp_config');
+'use strict';
+
+var connect = require('gulp-connect');
 
 
-gulp.task('reload', function() {
-  return gulp.src(config.bases.dist)
-    .pipe(connect.reload());
-});
+module.exports = function(gulp, src) {
+  gulp.task('reload', function() {
+    return gulp.src(src)
+      .pipe(connect.reload());
+  });
+};

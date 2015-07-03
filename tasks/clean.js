@@ -1,9 +1,11 @@
-var gulp = require('gulp'),
-  del = require('del'),
-  config = require('../../gulp_config');
+'use strict';
+
+var del = require('del');
 
 
-// remove build (erase dist folder recursively)
-gulp.task('clean', function(done) {
-  del([config.bases.dist], done);
-});
+module.exports = function(gulp, glob) {
+  // remove build (erase dist folder and other generated assets recursively)
+  gulp.task('clean', function(done) {
+    del([glob], done);
+  });
+};

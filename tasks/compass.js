@@ -1,18 +1,20 @@
-var gulp = require('gulp'),
-  compass = require('gulp-compass'),
-  config = require('../../gulp_config');
+'use strict';
+
+var compass = require('gulp-compass');
 
 
-gulp.task('compass', function(done) {
-  gulp.src(config.app.scss)
-    .pipe(compass({
-      project: config.dirname,
-      sass: config.bases.app,
-      css: config.dist.css,
-      environment: 'production',
-      sourcemap: true,
-      debug: false,
-      logging: false
-    }));
-  done();
-});
+module.exports = function(gulp, src, project, sass, css) {
+  gulp.task('compass', function(done) {
+    gulp.src(src)
+      .pipe(compass({
+        project: project,
+        sass: sass,
+        css: css,
+        environment: 'production',
+        sourcemap: true,
+        debug: false,
+        logging: false
+      }));
+    done();
+  });
+};

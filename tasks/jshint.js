@@ -1,10 +1,12 @@
-var gulp = require('gulp'),
-  jshint = require('gulp-jshint'),
-  config = require('../../gulp_config');
+'use strict';
+
+var jshint = require('gulp-jshint');
 
 
-gulp.task('jshint', function() {
-  return gulp.src(config.app.alljs)
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('jshint-stylish'));
-});
+module.exports = function(gulp, src) {
+  gulp.task('jshint', function() {
+    return gulp.src(src)
+      .pipe(jshint('.jshintrc'))
+      .pipe(jshint.reporter('jshint-stylish'));
+  });
+};

@@ -1,37 +1,40 @@
-var gulp = require('gulp'),
-  extend = require('extend'),
+'use strict';
+
+var extend = require('extend'),
   gulpInject = require('gulp-inject'),
-  preprocess = require('gulp-preprocess'),
-  config = require('../../gulp_config');
+  preprocess = require('gulp-preprocess');
 
+module.exports = function(gulp, dest, index, appName) {
+  function injectIndex() {
+    // don't read, just insert paths
+    var srcOptions = {
+      cwd: dest,
+      read: false
+    };
 
-function injectIndex() {
-  // don't read, just insert paths
-  var srcOptions = {
-    cwd: config.bases.dist,
-    read: false
-  };
+    var jsFiles = ['js/vendor.js', 'js/config.js', 'js/partials.js', 'js/scripts.js'];
 
-  var jsFiles = ['js/vendor.js', 'js/config.js', 'js/partials.js', 'js/scripts.js'];
+    // use relative paths with dist as base; remove the prepended '../dist' in the path
+    var injectOptions = {
+      relative: true,
+      ignorePath: '../' + dest
+    };
 
-  // use relative paths with dist as base; remove the prepended '../dist' in the path
-  var injectOptions = {
-    relative: true,
-    ignorePath: '../' + config.bases.dist
-  };
+    return gulp.src(index)
+      .pipe(gulpInject(gulp.src(['css/vendor.css', 'css/style.css'], srcOptions), injectOptions))
+      .pipe(gulpInject(gulp.src(jsFiles, srcOptions), extend({}, injectOptions)))
+      .pipe(preprocess({
+        context: {
+          APP: appName
+        }
+      }))
+      .pipe(gulp.dest(dest));
+  }
 
-  return gulp.src(config.app.index)
-    .pipe(gulpInject(gulp.src(['css/vendor.css', 'css/style.css'], srcOptions), injectOptions))
-    .pipe(gulpInject(gulp.src(jsFiles, srcOptions), extend({}, injectOptions)))
-    .pipe(preprocess({
-      context: {
-        APP: config.appName
-      }
-    }))
-    .pipe(gulp.dest(config.bases.dist));
-}
+  // use this for watch
+  gulp.task('justIndex', injectIndex);
 
-gulp.task('justIndex', injectIndex);
+  // use this initial building
+  gulp.task('index', ['compass', 'configScripts', 'scripts', 'vendorScripts', 'vendorStyles'], injectIndex);
+};
 
-// use this for building
-gulp.task('index', ['compass', 'config', 'scripts', 'vendorScripts', 'vendorStyles'], injectIndex);

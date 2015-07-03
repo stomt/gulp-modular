@@ -2,10 +2,20 @@
 Boilerplate gulp tasks for quick project setup.
 
 # Setup
- 1. Go to your project root
- 2. `git submodule add https://github.com/ONE-LOGIC/gulp-modular/`
- 3. Create `gulpfile.js` and `require()` tasks from `gulp-modular/tasks/` (cf. [graFiddle gulpfile.js](https://github.com/GraFiddle/grafiddle/blob/develop/gulpfile.js)). Optionally add composite tasks to the file.
- 4. Create `gulp_config.js` and define globs and flags required by the gulp-modular tasks (cf. [graFiddle gulp_config.js](https://github.com/GraFiddle/grafiddle/blob/develop/gulp_config.js)).
+ 1. `npm install gulp gulp-modular`
+ 2. Create `gulpfile.js` (cf. [graFiddle gulpfile.js](https://github.com/GraFiddle/grafiddle/blob/develop/gulpfile.js)), require both modules and define tasks and configuration:
+
+```javascript
+var gulp = require('gulp');
+var modular = require('gulp-modular');
+
+var tasks = ['bower', 'clean', 'compass', 'configScripts', 'connect', 'fonts', ...];
+var config = {...};
+
+modular(gulp, tasks, config);
+```
+
+Detailed documentation of our best practice workflow and the config object will be added soon.
 
 # Tasks
 

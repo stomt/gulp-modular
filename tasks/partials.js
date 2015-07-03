@@ -1,27 +1,29 @@
-var gulp = require('gulp'),
-  minifyHtml = require('gulp-minify-html'),
+'use strict';
+
+var minifyHtml = require('gulp-minify-html'),
   ngHtml2Js = require('gulp-ng-html2js'),
   newer = require('gulp-newer'),
   concat = require('gulp-concat'),
-  uglify = require('gulp-uglify'),
-  config = require('../../gulp_config');
+  uglify = require('gulp-uglify');
 
 
 var partialsFile = 'partials.js';
 
-gulp.task('partials', function() {
-  return gulp.src(config.app.views)
-    .pipe(minifyHtml({
-      empty: true,
-      spare: true,
-      quotes: true
-    }))
-    .pipe(ngHtml2Js({
-      moduleName: config.templateName,
-      prefix: 'components/'
-    }))
-    .pipe(newer(config.dist.js + partialsFile))
-    .pipe(concat(partialsFile))
-    .pipe(uglify())
-    .pipe(gulp.dest(config.dist.js));
-});
+module.exports = function(gulp, src, dest, moduleName) {
+  gulp.task('partials', function() {
+    return gulp.src(src)
+      .pipe(minifyHtml({
+        empty: true,
+        spare: true,
+        quotes: true
+      }))
+      .pipe(ngHtml2Js({
+        moduleName: moduleName,
+        prefix: 'components/'
+      }))
+      .pipe(newer(dest + partialsFile))
+      .pipe(concat(partialsFile))
+      .pipe(uglify())
+      .pipe(gulp.dest(dest));
+  });
+};

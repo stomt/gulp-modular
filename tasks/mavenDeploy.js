@@ -1,11 +1,13 @@
-var gulp = require('gulp'),
-  maven = require('gulp-maven-deploy'),
-  config = require('../../gulp_config');
+'use strict';
+
+var maven = require('gulp-maven-deploy');
 
 
-gulp.task('maven-deploy', ['build'], function() {
-  gulp.src('.')
-    .pipe(maven.deploy({
-      config: extend({}, config.mavenConfig, {repositories: config.mavenRepo})
-    }));
-});
+module.exports = function(gulp, config, repo) {
+  gulp.task('maven-deploy', ['build'], function() {
+    gulp.src('.')
+      .pipe(maven.deploy({
+        config: extend({}, config, {repositories: repo})
+      }));
+  });
+};

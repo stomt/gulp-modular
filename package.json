@@ -1,11 +1,14 @@
 {
   "name": "gulp-modular",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Boilerplate gulp tasks for quick project setup.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "index.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/ONE-LOGIC/gulp-modular"

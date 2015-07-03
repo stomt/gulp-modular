@@ -1,16 +1,18 @@
-var gulp = require('gulp'),
-  connect = require('gulp-connect'),
-  history = require('connect-history-api-fallback'),
-  config = require('../../gulp_config');
+'use strict';
+
+var connect = require('gulp-connect'),
+  history = require('connect-history-api-fallback');
 
 
-gulp.task('connect', ['build'], function() {
-  connect.server({
-    root: [config.bases.dist],
-    port: config.port,
-    livereload: true,
-    middleware: function() {
-      return [history({})];
-    }
+module.exports = function(gulp, root, port) {
+  gulp.task('connect', ['build'], function() {
+    connect.server({
+      root: [root],
+      port: port,
+      livereload: true,
+      middleware: function() {
+        return [history({})];
+      }
+    });
   });
-});
+};

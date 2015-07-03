@@ -1,8 +1,9 @@
-var gulp = require('gulp'),
-  config = require('../../gulp_config');
+'use strict';
 
 
-gulp.task('statics', function() {
-  return gulp.src(config.app.statics)
-    .pipe(gulp.dest(config.bases.dist));
-});
+module.exports = function(gulp, src, dest) {
+  gulp.task('statics', function() {
+    return gulp.src(src)
+      .pipe(gulp.dest(dest));
+  });
+};

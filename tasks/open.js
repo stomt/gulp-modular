@@ -1,13 +1,15 @@
-var gulp = require('gulp'),
-  open = require('gulp-open'),
-  config = require('../../gulp_config');
+'use strict';
+
+var open = require('gulp-open');
 
 
-var options = {
-  url: 'http://localhost:' + config.port
+module.exports = function(gulp, root, port) {
+  var options = {
+    url: 'http://localhost:' + port
+  };
+
+  gulp.task('open', ['index'], function() {
+    gulp.src(root + 'index.html')
+      .pipe(open('', options));
+  });
 };
-
-gulp.task('open', ['index'], function() {
-  gulp.src(config.dist + 'index.html')
-    .pipe(open('', options));
-});
