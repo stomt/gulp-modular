@@ -1,6 +1,7 @@
 'use strict';
 
-var karma = require('karma').server;
+var karma = require('karma').server,
+  runSequence = require('run-sequence');
 
 
 module.exports = function(gulp, config) {
