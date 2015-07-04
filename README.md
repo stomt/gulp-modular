@@ -36,7 +36,7 @@ Detailed documentation of our best practice workflow and the config object will 
  - `vendorStyles` concats all styles from the bower dependencies and stores the file to a particular distribution folder.
 
 ## AngularJS & JavaScript
- - `configScripts` creates a dedicated Angular module to provide a environment specific appp configuration.
+ - `configScripts` creates a dedicated Angular module to provide a environment specific app configuration.
  - `karma` runs the karma test runner.
  - `protractor` runs protractor end-to-end tests.
  - `partials` collects all partials and combines them in a Angular module.
@@ -52,3 +52,4 @@ Detailed documentation of our best practice workflow and the config object will 
 ## Deploy
  - `mavenDeploy` creates a maven package and uploads it to a custom repository.
  - `mavenInstall` creates a snapshot maven package and installs it on the local machine.
+ - `gitDeploy` saves the compiled files in a specified git branch and pushes this branch.

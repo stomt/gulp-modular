@@ -27,6 +27,10 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/fonts')(gulp, config.app.fonts, config.dist.fonts);
   }
 
+  if (tasks.indexOf('gitDeploy') !== -1) {
+    require('./tasks/gitDeploy')(gulp, config.bases.dist, config.deployBranch);
+  }
+
   if (tasks.indexOf('images') !== -1) {
     require('./tasks/images')(gulp, config.app.images, config.dist.images);
   }
