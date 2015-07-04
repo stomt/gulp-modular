@@ -9,7 +9,7 @@ Boilerplate gulp tasks for quick project setup.
 var gulp = require('gulp');
 var modular = require('gulp-modular');
 
-var tasks = ['bower', 'clean', 'compass', 'configScripts', 'connect', 'fonts', ...];
+var tasks = ['bower', 'clean', 'sass', 'configScripts', 'connect', 'fonts', ...];
 var config = {...};
 
 modular(gulp, tasks, config);
@@ -30,7 +30,8 @@ Detailed documentation of our best practice workflow and the config object will 
  - `statics` copies static files to a particular distribution folder.
 
 ## Stylesheets
- - `compass` compiles scss files to CSS files.
+ - `compass` compiles scss files to CSS files using [compass](https://github.com/Compass/compass).
+ - `sass` compiles scss files to CSS using [gulp-sass](https://github.com/dlmanning/gulp-sass).
  - `vendorStyles` concats all styles from the bower dependencies and stores the file to a particular distribution folder.
 
 ## AngularJS & JavaScript

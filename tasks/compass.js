@@ -4,7 +4,7 @@ var compass = require('gulp-compass');
 
 
 module.exports = function(gulp, src, project, sass, css) {
-  gulp.task('compass', function(done) {
+  gulp.task('styles', function(done) {
     gulp.src(src)
       .pipe(compass({
         project: project,

@@ -35,6 +35,6 @@ module.exports = function(gulp, dest, index, appName) {
   gulp.task('justIndex', injectIndex);
 
   // use this initial building
-  gulp.task('index', ['compass', 'configScripts', 'scripts', 'vendorScripts', 'vendorStyles'], injectIndex);
+  gulp.task('index', ['styles', 'configScripts', 'scripts', 'vendorScripts', 'vendorStyles'], injectIndex);
 };
 

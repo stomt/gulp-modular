@@ -71,6 +71,10 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/reload')(gulp, config.bases.dist);
   }
 
+  if (tasks.indexOf('sass') !== -1) {
+    require('./tasks/sass')(gulp, config.app.scss, config.dist.css, config.production, config.sourceMapsPath);
+  }
+
   if (tasks.indexOf('scripts') !== -1) {
     require('./tasks/scripts')(gulp, config.app.js, config.dist.js, config.sourceMapsPath);
   }
