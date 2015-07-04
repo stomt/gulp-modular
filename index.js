@@ -24,7 +24,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('fonts') !== -1) {
-    require('./tasks/fonts')(gulp, config.debug, config.dist.fonts);
+    require('./tasks/fonts')(gulp, config.app.fonts, config.dist.fonts);
   }
 
   if (tasks.indexOf('images') !== -1) {
@@ -81,6 +81,10 @@ module.exports = function(gulp, tasks, config) {
 
   if (tasks.indexOf('statics') !== -1) {
     require('./tasks/statics')(gulp, config.app.statics, config.bases.dist);
+  }
+
+  if (tasks.indexOf('vendorFonts') !== -1) {
+    require('./tasks/vendorFonts')(gulp, config.debug, config.dist.fonts);
   }
 
   if (tasks.indexOf('vendorScripts') !== -1) {

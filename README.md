@@ -22,12 +22,13 @@ Detailed documentation of our best practice workflow and the config object will 
 ## General
  - `bower:install` to install packages defined in the `bower.json`.
  - `bower:prune` to remove packages that are not used anymore.
- - `fonts` copies fonts defined in the bower dependencies to a particular distribution folder.
  - `images` collects graphics of different filetypes, flattens the paths and places them in a particular distribution folder.
- - `ìndex` injects the transpiled JavaScript and CSS into the `index.html`.
+ - `index` injects the transpiled JavaScript and CSS into the `index.html`.
  - `jshint` runs jshint linting tool.
  - `clean` removes the distribution folder with all its content.
  - `statics` copies static files to a particular distribution folder.
+ - `fonts` copies local fonts to a particular distribution folder.
+ - `vendorFonts` copies fonts defined in the bower dependencies to a particular distribution folder.
 
 ## Stylesheets
  - `compass` compiles scss files to CSS files using [compass](https://github.com/Compass/compass).

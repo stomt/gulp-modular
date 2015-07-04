@@ -1,19 +1,14 @@
 'use strict';
 
-var bowerFiles = require('main-bower-files'),
-  gulpif = require('gulp-if'),
-  debug = require('gulp-debug');
+//var gulpif = require('gulp-if'),
+//  rev = require('gulp-rev'),
 
-
-var fontsFilter = {
-  filter: /\.(otf|eot|svg|ttf|woff)/i
-};
-
-module.exports = function(gulp, debugFlag, dest) {
-  gulp.task('fonts', ['bower:install', 'bower:prune'], function() {
-    return gulp.src(bowerFiles(fontsFilter))
-      .pipe(gulpif(debugFlag, debug()))
+module.exports = function(gulp, src, dest) {
+  gulp.task('fonts', function () {
+    return gulp.src(src)
+      //.pipe(gulpif(config.rev, rev()))
       .pipe(gulp.dest(dest));
+      //.pipe(gulpif(config.rev, rev.manifest()))
+      //.pipe(gulpif(config.rev, gulp.dest(dest)));
   });
 };
-
