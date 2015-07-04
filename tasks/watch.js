@@ -1,8 +1,10 @@
 'use strict';
 
+var liveReload = require('gulp-livereload');
 
 module.exports = function(gulp, config) {
   gulp.task('watch', ['build'], function() {
+    liveReload.listen();
     gulp.watch(config.app.index, ['justIndex']);
     gulp.watch(config.app.views, ['partials']);
     gulp.watch(config.app.statics, ['statics']);
