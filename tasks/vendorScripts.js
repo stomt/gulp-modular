@@ -15,14 +15,14 @@ var jsFilter = {
   filter: /\.js$/i
 };
 
-module.exports = function(gulp, dest, sourceMapPath, production, debugFlag) {
+module.exports = function(gulp, dest, sourceMapPath, debugFlag) {
   gulp.task('vendorScripts', ['bower:install', 'bower:prune'], function(done) {
     gulp.src(bowerFiles(jsFilter))
       .pipe(gulpif(debugFlag, debug()))
       .pipe(sourceMaps.init())
       .pipe(gulpif(isFirstRun, newer(dest + vendorFile)))
       .pipe(concat(vendorFile))
-      .pipe(gulpif(production, uglify()))
+      .pipe(uglify())
       .pipe(sourceMaps.write(sourceMapPath))
       .pipe(gulp.dest(dest));
 

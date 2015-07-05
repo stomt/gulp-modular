@@ -16,7 +16,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('configScripts') !== -1) {
-    require('./tasks/configScripts')(gulp, config.app.config, config.configName, config.dist.js);
+    require('./tasks/configScripts')(gulp, config.env.constants, config.configName, config.dist.js);
   }
 
   if (tasks.indexOf('connect') !== -1) {
@@ -76,7 +76,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('sass') !== -1) {
-    require('./tasks/sass')(gulp, config.app.scss, config.dist.css, config.production, config.sourceMapsPath);
+    require('./tasks/sass')(gulp, config.app.scss, config.dist.css, config.sourceMapsPath);
   }
 
   if (tasks.indexOf('scripts') !== -1) {
@@ -92,7 +92,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('vendorScripts') !== -1) {
-    require('./tasks/vendorScripts')(gulp, config.dist.js, config.sourcemapPath, config.production, config.debug);
+    require('./tasks/vendorScripts')(gulp, config.dist.js, config.sourcemapPath, config.debug);
   }
 
   if (tasks.indexOf('vendorStyles') !== -1) {

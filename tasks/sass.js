@@ -6,10 +6,10 @@ var sass = require('gulp-sass'),
   //revReplace = require('gulp-rev-replace'),
 
 
-module.exports = function(gulp, src, dest, uglifyFlag, sourceMapsPath) {
+module.exports = function(gulp, src, dest, sourceMapsPath) {
   gulp.task('styles', [], function (done) {
     var options = {
-      outputStyle: uglifyFlag ? 'compressed' : 'nested'
+      outputStyle: 'compressed'
     };
 
     //var revOptions = {
