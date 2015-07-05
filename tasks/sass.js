@@ -1,30 +1,32 @@
 var sass = require('gulp-sass'),
   sourceMaps = require('gulp-sourcemaps'),
-  autoPrefixer = require('gulp-autoprefixer');
-  //gulpif = require('gulp-if'),
-  //rev = require('gulp-rev'),
-  //revReplace = require('gulp-rev-replace'),
+  autoPrefixer = require('gulp-autoprefixer'),
+  gulpif = require('gulp-if'),
+  rev = require('gulp-rev'),
+  revReplace = require('gulp-rev-replace');
 
 
-module.exports = function(gulp, src, dest, sourceMapsPath) {
+module.exports = function(gulp, src, dest, revFlag, manifestPath, sourceMapsPath) {
   gulp.task('styles', [], function (done) {
-    var options = {
+    var optionsSass = {
       outputStyle: 'compressed'
     };
 
-    //var revOptions = {
-    //  manifest: gulp.src('./' + config.dist.fonts + 'rev-manifest.json')
-    //};
+    var optionsPrefixer = {
+      browsers: ['last 2 versions'],
+      cascade: false
+    };
+
+    var optionsRev = {
+      manifest: gulp.src('./' + manifestPath + 'rev-manifest.json')
+    };
 
     gulp.src(src)
       .pipe(sourceMaps.init())
-      .pipe(sass(options).on('error', sass.logError))
-      .pipe(autoPrefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
-      }))
-      //.pipe(gulpif(config.rev, revReplace(revOptions)))
-      //.pipe(gulpif(config.rev, rev()))
+      .pipe(sass(optionsSass).on('error', sass.logError))
+      .pipe(autoPrefixer(optionsPrefixer))
+      .pipe(gulpif(revFlag, revReplace(optionsRev)))
+      .pipe(gulpif(revFlag, rev()))
       .pipe(sourceMaps.write(sourceMapsPath))
       .pipe(gulp.dest(dest));
     done();

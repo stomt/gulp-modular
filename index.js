@@ -16,7 +16,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('configScripts') !== -1) {
-    require('./tasks/configScripts')(gulp, config.env.constants, config.configName, config.dist.js);
+    require('./tasks/configScripts')(gulp, config.env.constants, config.configName, config.dist.js, config.env.rev);
   }
 
   if (tasks.indexOf('connect') !== -1) {
@@ -24,7 +24,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('fonts') !== -1) {
-    require('./tasks/fonts')(gulp, config.app.fonts, config.dist.fonts);
+    require('./tasks/fonts')(gulp, config.app.fonts, config.dist.fonts, config.env.rev);
   }
 
   if (tasks.indexOf('gitDeploy') !== -1) {
@@ -60,11 +60,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('partials') !== -1) {
-    require('./tasks/partials')(gulp, config.app.views, config.dist.js, config.templateName, config.sourceMapsPath);
-  }
-
-  if (tasks.indexOf('protractor') !== -1) {
-    require('./tasks/protractor')(gulp, config.bases.dist);
+    require('./tasks/partials')(gulp, config.app.views, config.dist.js, config.templateName, config.sourceMapsPath, config.env.rev);
   }
 
   if (tasks.indexOf('protractor') !== -1) {
@@ -76,11 +72,11 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('sass') !== -1) {
-    require('./tasks/sass')(gulp, config.app.scss, config.dist.css, config.sourceMapsPath);
+    require('./tasks/sass')(gulp, config.app.scss, config.dist.css, config.env.rev, config.dist.fonts, config.sourceMapsPath);
   }
 
   if (tasks.indexOf('scripts') !== -1) {
-    require('./tasks/scripts')(gulp, config.app.js, config.dist.js, config.sourceMapsPath);
+    require('./tasks/scripts')(gulp, config.app.js, config.dist.js, config.sourceMapsPath, config.env.rev);
   }
 
   if (tasks.indexOf('statics') !== -1) {
@@ -88,15 +84,15 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('vendorFonts') !== -1) {
-    require('./tasks/vendorFonts')(gulp, config.debug, config.dist.fonts);
+    require('./tasks/vendorFonts')(gulp, config.debug, config.dist.fonts, config.env.rev);
   }
 
   if (tasks.indexOf('vendorScripts') !== -1) {
-    require('./tasks/vendorScripts')(gulp, config.dist.js, config.sourcemapPath, config.debug);
+    require('./tasks/vendorScripts')(gulp, config.dist.js, config.sourcemapPath, config.debug, config.env.rev);
   }
 
   if (tasks.indexOf('vendorStyles') !== -1) {
-    require('./tasks/vendorStyles')(gulp, config.dist.css, config.sourceMapsPath, config.debug);
+    require('./tasks/vendorStyles')(gulp, config.dist.css, config.sourceMapsPath, config.debug, config.env.rev);
   }
 
   if (tasks.indexOf('watch') !== -1) {
