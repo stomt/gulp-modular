@@ -28,7 +28,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('gitDeploy') !== -1) {
-    require('./tasks/gitDeploy')(gulp, config.bases.dist, config.deployBranch);
+    require('./tasks/gitDeploy')(gulp, config.bases.dist, config.env.deployBranch);
   }
 
   if (tasks.indexOf('images') !== -1) {

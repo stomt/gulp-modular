@@ -7,7 +7,7 @@ var sass = require('gulp-sass'),
 
 
 module.exports = function(gulp, src, dest, revFlag, manifestPath, sourceMapsPath) {
-  gulp.task('styles', [], function (done) {
+  gulp.task('styles', ['fonts'], function (done) {
     var optionsSass = {
       outputStyle: 'compressed'
     };

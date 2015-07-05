@@ -18,6 +18,9 @@
     "gulp"
   ],
   "author": "Sebastian Henneberg <dev@sebastianhenneberg.de> (http://sebastianhenneberg.de/)",
+  "contributors": [
+    "Max Klenk <max@klenk.biz>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ONE-LOGIC/gulp-modular/issues"
@@ -61,6 +64,7 @@
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
     "karma": "^0.12.36",
-    "main-bower-files": "^2.8.0"
+    "main-bower-files": "^2.8.0",
+    "run-sequence": "^1.1.1"
   }
 }
