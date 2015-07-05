@@ -60,7 +60,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('partials') !== -1) {
-    require('./tasks/partials')(gulp, config.app.views, config.dist.js, config.templateName);
+    require('./tasks/partials')(gulp, config.app.views, config.dist.js, config.templateName, config.sourceMapsPath);
   }
 
   if (tasks.indexOf('protractor') !== -1) {
