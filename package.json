@@ -63,6 +63,7 @@
     "gulp-sass": "^2.0.3",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",
+    "jshint-stylish": "^2.0.1",
     "karma": "^0.12.36",
     "main-bower-files": "^2.8.0",
     "run-sequence": "^1.1.1"
