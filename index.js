@@ -88,7 +88,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('vendorScripts') !== -1) {
-    require('./tasks/vendorScripts')(gulp, config.dist.js, config.sourcemapPath, config.debug, config.env.rev);
+    require('./tasks/vendorScripts')(gulp, config.dist.js, config.sourceMapsPath, config.debug, config.env.rev);
   }
 
   if (tasks.indexOf('vendorStyles') !== -1) {
