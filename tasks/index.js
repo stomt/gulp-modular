@@ -2,6 +2,7 @@
 
 var extend = require('extend'),
   gulpInject = require('gulp-inject'),
+  minifyInline = require('gulp-minify-inline'),
   minifyHtml = require('gulp-minify-html'),
   preprocess = require('gulp-preprocess');
 
@@ -30,6 +31,7 @@ module.exports = function(gulp, dest, index, appName) {
           APP: appName
         }
       }))
+      .pipe(minifyInline())
       .pipe(minifyHtml({
         empty: true,
         spare: true,

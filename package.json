@@ -67,5 +67,8 @@
     "karma": "^0.12.36",
     "main-bower-files": "^2.8.0",
     "run-sequence": "^1.1.1"
+  },
+  "devDependencies": {
+    "gulp-minify-inline": "^0.1.1"
   }
 }
