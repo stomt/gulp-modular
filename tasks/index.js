@@ -2,6 +2,7 @@
 
 var extend = require('extend'),
   gulpInject = require('gulp-inject'),
+  minifyHtml = require('gulp-minify-html'),
   preprocess = require('gulp-preprocess');
 
 module.exports = function(gulp, dest, index, appName) {
@@ -28,6 +29,11 @@ module.exports = function(gulp, dest, index, appName) {
         context: {
           APP: appName
         }
+      }))
+      .pipe(minifyHtml({
+        empty: true,
+        spare: true,
+        quotes: true
       }))
       .pipe(gulp.dest(dest));
   }
