@@ -50,6 +50,7 @@
     "gulp-maven-deploy": "^0.2.0",
     "gulp-minify-css": "^1.1.6",
     "gulp-minify-html": "^1.0.3",
+    "gulp-minify-inline": "^0.1.1",
     "gulp-newer": "^0.5.1",
     "gulp-ng-annotate": "^1.0.0",
     "gulp-ng-constant": "^0.3.0",
@@ -67,8 +68,5 @@
     "karma": "^0.12.36",
     "main-bower-files": "^2.8.0",
     "run-sequence": "^1.1.1"
-  },
-  "devDependencies": {
-    "gulp-minify-inline": "^0.1.1"
   }
 }
