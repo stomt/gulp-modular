@@ -21,7 +21,7 @@ module.exports = function(gulp, tasks, config) {
 
     gulp.watch(config.app.scssAll, ['styles']);
     gulp.watch(config.app.js, ['scripts']);
-    gulp.watch(config.bowerjson, ['vendorScripts', 'vendorStyles', 'vendorFonts']);
+    gulp.watch(config.bowerjson, ['bowerScripts', 'bowerStyles', 'bowerFonts']);
     // watch any change in dist folder; reload immediately in case of detected change
     gulp.watch(config.bases.dist + '**', ['reload']);
   });

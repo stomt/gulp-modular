@@ -45,6 +45,6 @@ module.exports = function(gulp, tasks, dest, index, appName) {
   gulp.task('justIndex', injectIndex);
 
   // use this initial building
-  var mergedTasks = _.intersection(tasks, ['partials', 'configScripts', 'scripts', 'vendorScripts', 'styles', 'vendorStyles']);
+  var mergedTasks = _.intersection(tasks, ['partials', 'configScripts', 'scripts', 'bowerScripts', 'styles', 'bowerStyles']);
   gulp.task('index', mergedTasks, injectIndex);
 };

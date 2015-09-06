@@ -38,7 +38,7 @@ module.exports = function(gulp, tasks, config) {
     });
   });
 
-  var mergedTasks = _.intersection(tasks, ['config', 'partials', 'vendorScripts']);
+  var mergedTasks = _.intersection(tasks, ['config', 'partials', 'bowerScripts']);
 
   gulp.task('test', function() {
     runSequence(mergedTasks, 'karma');

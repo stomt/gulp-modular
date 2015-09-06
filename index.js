@@ -83,16 +83,16 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/statics')(gulp, config.app.statics, config.bases.dist);
   }
 
-  if (tasks.indexOf('vendorFonts') !== -1) {
-    require('./tasks/vendorFonts')(gulp, tasks, config.debug, config.dist.fonts, config.env.rev);
+  if (tasks.indexOf('bowerFonts') !== -1) {
+    require('./tasks/bowerFonts')(gulp, tasks, config.debug, config.dist.fonts, config.env.rev);
   }
 
-  if (tasks.indexOf('vendorScripts') !== -1) {
-    require('./tasks/vendorScripts')(gulp, tasks, config.dist.js, config.sourceMapsPath, config.debug, config.env.rev);
+  if (tasks.indexOf('bowerScripts') !== -1) {
+    require('./tasks/bowerScripts')(gulp, tasks, config.dist.js, config.sourceMapsPath, config.debug, config.env.rev);
   }
 
-  if (tasks.indexOf('vendorStyles') !== -1) {
-    require('./tasks/vendorStyles')(gulp, tasks, config.dist.css, config.sourceMapsPath, config.debug, config.env.rev);
+  if (tasks.indexOf('bowerStyles') !== -1) {
+    require('./tasks/bowerStyles')(gulp, tasks, config.dist.css, config.sourceMapsPath, config.debug, config.env.rev);
   }
 
   if (tasks.indexOf('watch') !== -1) {

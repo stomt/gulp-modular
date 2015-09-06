@@ -12,7 +12,7 @@ var fontsFilter = {
 
 module.exports = function(gulp, tasks, debugFlag, dest, revFlag) {
   var mergedTasks = _.intersection(tasks, ['bower:install', 'bower:prune']);
-  gulp.task('vendorFonts', mergedTasks, function() {
+  gulp.task('bowerFonts', mergedTasks, function() {
     return gulp.src(bowerFiles(fontsFilter))
       .pipe(gulpif(debugFlag, debug()))
       .pipe(gulpif(revFlag, rev()))

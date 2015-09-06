@@ -28,12 +28,12 @@ Detailed documentation of our best practice workflow and the config object will 
  - `clean` removes the distribution folder with all its content.
  - `statics` copies static files to a particular distribution folder.
  - `fonts` copies local fonts to a particular distribution folder.
- - `vendorFonts` copies fonts defined in the bower dependencies to a particular distribution folder.
+ - `bowerFonts` copies fonts defined in the bower dependencies to a particular distribution folder.
 
 ## Stylesheets
  - `compass` compiles scss files to CSS files using [compass](https://github.com/Compass/compass).
  - `sass` compiles scss files to CSS using [gulp-sass](https://github.com/dlmanning/gulp-sass).
- - `vendorStyles` concats all styles from the bower dependencies and stores the file to a particular distribution folder.
+ - `bowerStyles` concats all styles from the bower dependencies and stores the file to a particular distribution folder.
 
 ## AngularJS & JavaScript
  - `configScripts` creates a dedicated Angular module to provide a environment specific app configuration.
@@ -41,7 +41,7 @@ Detailed documentation of our best practice workflow and the config object will 
  - `protractor` runs protractor end-to-end tests.
  - `partials` collects all partials and combines them in a Angular module.
  - `scripts` connect all scripts, annotates, orders, concats and stores a the result to a file in a particular distribution folder.
- - `vendorScripts` concats all scripts from the bower dependencies and stores the file to a particular distribution folder.
+ - `bowerScripts` concats all scripts from the bower dependencies and stores the file to a particular distribution folder.
 
 ## Local Server
  - `connect` provides a small HTTP server for local testing. It serves the requested file if available, the `index.html` otherwise (to support Angular HTML5 mode)
