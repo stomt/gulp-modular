@@ -7,7 +7,8 @@ var bowerFiles = require('main-bower-files'),
   newer = require('gulp-newer'),
   concat = require('gulp-concat'),
   rev = require('gulp-rev'),
-  minifyCSS = require('gulp-minify-css');
+  minifyCSS = require('gulp-minify-css'),
+  _ = require('underscore');
 
 
 var isFirstRun = true;
@@ -16,8 +17,9 @@ var cssFilter = {
   filter: /\.css$/i
 };
 
-module.exports = function(gulp, dest, sourceMapsPath, debugFlag, revFlag) {
-  gulp.task('vendorStyles', ['bower:install', 'bower:prune'], function(done) {
+module.exports = function(gulp, tasks, dest, sourceMapsPath, debugFlag, revFlag) {
+  var mergedTasks = _.intersection(tasks, ['bower:install', 'bower:prune']);
+  gulp.task('vendorStyles', mergedTasks, function(done) {
     gulp.src(bowerFiles(cssFilter))
       .pipe(gulpif(debugFlag, debug()))
       .pipe(sourceMaps.init())

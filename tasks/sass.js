@@ -3,11 +3,13 @@ var sass = require('gulp-sass'),
   autoPrefixer = require('gulp-autoprefixer'),
   gulpif = require('gulp-if'),
   rev = require('gulp-rev'),
-  revReplace = require('gulp-rev-replace');
+  revReplace = require('gulp-rev-replace'),
+  _ = require('underscore');
 
 
-module.exports = function(gulp, src, dest, revFlag, manifestPath, sourceMapsPath) {
-  gulp.task('styles', ['fonts'], function (done) {
+module.exports = function(gulp, tasks, src, dest, revFlag, manifestPath, sourceMapsPath) {
+  var mergedTasks = _.intersection(tasks, ['fonts']);
+  gulp.task('styles', mergedTasks, function (done) {
     var optionsSass = {
       outputStyle: 'compressed'
     };
@@ -32,4 +34,3 @@ module.exports = function(gulp, src, dest, revFlag, manifestPath, sourceMapsPath
     done();
   });
 };
-

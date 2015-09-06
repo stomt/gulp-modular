@@ -36,7 +36,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('index') !== -1) {
-    require('./tasks/index')(gulp, config.bases.dist, config.app.index, config.appName);
+    require('./tasks/index')(gulp, tasks, config.bases.dist, config.app.index, config.appName);
   }
 
   if (tasks.indexOf('jshint') !== -1) {
@@ -44,7 +44,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('karma') !== -1) {
-    require('./tasks/karma')(gulp, config.dirname);
+    require('./tasks/karma')(gulp, tasks,  config.dirname);
   }
 
   if (tasks.indexOf('mavenDeploy') !== -1) {
@@ -72,7 +72,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('sass') !== -1) {
-    require('./tasks/sass')(gulp, config.app.scss, config.dist.css, config.env.rev, config.dist.fonts, config.sourceMapsPath);
+    require('./tasks/sass')(gulp, tasks, config.app.scss, config.dist.css, config.env.rev, config.dist.fonts, config.sourceMapsPath);
   }
 
   if (tasks.indexOf('scripts') !== -1) {
@@ -84,19 +84,19 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('vendorFonts') !== -1) {
-    require('./tasks/vendorFonts')(gulp, config.debug, config.dist.fonts, config.env.rev);
+    require('./tasks/vendorFonts')(gulp, tasks, config.debug, config.dist.fonts, config.env.rev);
   }
 
   if (tasks.indexOf('vendorScripts') !== -1) {
-    require('./tasks/vendorScripts')(gulp, config.dist.js, config.sourceMapsPath, config.debug, config.env.rev);
+    require('./tasks/vendorScripts')(gulp, tasks, config.dist.js, config.sourceMapsPath, config.debug, config.env.rev);
   }
 
   if (tasks.indexOf('vendorStyles') !== -1) {
-    require('./tasks/vendorStyles')(gulp, config.dist.css, config.sourceMapsPath, config.debug, config.env.rev);
+    require('./tasks/vendorStyles')(gulp, tasks, config.dist.css, config.sourceMapsPath, config.debug, config.env.rev);
   }
 
   if (tasks.indexOf('watch') !== -1) {
-    require('./tasks/watch')(gulp, config);
+    require('./tasks/watch')(gulp, tasks, config);
   }
 
 };

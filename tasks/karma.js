@@ -1,10 +1,11 @@
 'use strict';
 
 var karma = require('karma').server,
-  runSequence = require('run-sequence');
+  runSequence = require('run-sequence'),
+  _ = require('underscore');
 
 
-module.exports = function(gulp, config) {
+module.exports = function(gulp, tasks, config) {
   var configFile = config + '/karma.conf.js';
   var browsers = ['PhantomJS', 'Firefox', 'Chrome'];
 
@@ -37,17 +38,17 @@ module.exports = function(gulp, config) {
     });
   });
 
+  var mergedTasks = _.intersection(tasks, ['config', 'partials', 'vendorScripts']);
+
   gulp.task('test', function() {
-    runSequence(['config', 'partials', 'vendorScripts'], 'karma');
+    runSequence(mergedTasks, 'karma');
   });
 
   gulp.task('test:all', function() {
-    runSequence(['config', 'partials', 'vendorScripts'], 'karma:all');
+    runSequence(mergedTasks, 'karma:all');
   });
 
   gulp.task('test:watch', function() {
-    runSequence(['config', 'partials', 'vendorScripts'], 'karma:watch');
+    runSequence(mergedTasks, 'karma:watch');
   });
 };
-
-

@@ -3,14 +3,16 @@
 var bowerFiles = require('main-bower-files'),
   gulpif = require('gulp-if'),
   rev = require('gulp-rev'),
-  debug = require('gulp-debug');
+  debug = require('gulp-debug'),
+  _ = require('underscore');
 
 var fontsFilter = {
   filter: /\.(otf|eot|svg|ttf|woff)/i
 };
 
-module.exports = function(gulp, debugFlag, dest, revFlag) {
-  gulp.task('vendorFonts', ['bower:install', 'bower:prune'], function() {
+module.exports = function(gulp, tasks, debugFlag, dest, revFlag) {
+  var mergedTasks = _.intersection(tasks, ['bower:install', 'bower:prune']);
+  gulp.task('vendorFonts', mergedTasks, function() {
     return gulp.src(bowerFiles(fontsFilter))
       .pipe(gulpif(debugFlag, debug()))
       .pipe(gulpif(revFlag, rev()))

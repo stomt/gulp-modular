@@ -67,6 +67,7 @@
     "jshint-stylish": "^2.0.1",
     "karma": "^0.12.36",
     "main-bower-files": "^2.8.0",
-    "run-sequence": "^1.1.1"
+    "run-sequence": "^1.1.1",
+    "underscore": "^1.8.3"
   }
 }

@@ -4,9 +4,10 @@ var extend = require('extend'),
   gulpInject = require('gulp-inject'),
   minifyInline = require('gulp-minify-inline'),
   minifyHtml = require('gulp-minify-html'),
-  preprocess = require('gulp-preprocess');
+  preprocess = require('gulp-preprocess'),
+  _ = require('underscore');
 
-module.exports = function(gulp, dest, index, appName) {
+module.exports = function(gulp, tasks, dest, index, appName) {
   function injectIndex() {
     // don't read, just insert paths
     var srcOptions = {
@@ -44,6 +45,6 @@ module.exports = function(gulp, dest, index, appName) {
   gulp.task('justIndex', injectIndex);
 
   // use this initial building
-  gulp.task('index', ['partials', 'configScripts', 'scripts', 'vendorScripts', 'styles', 'vendorStyles'], injectIndex);
+  var mergedTasks = _.intersection(tasks, ['partials', 'configScripts', 'scripts', 'vendorScripts', 'styles', 'vendorStyles']);
+  gulp.task('index', mergedTasks, injectIndex);
 };
-
