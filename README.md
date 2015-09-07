@@ -9,7 +9,7 @@ Boilerplate gulp tasks for quick project setup.
 var gulp = require('gulp');
 var modular = require('gulp-modular');
 
-var tasks = ['bower', 'clean', 'sass', 'configScripts', 'connect', 'fonts', ...];
+var tasks = ['bower', 'clean', 'sass', 'configScripts', 'browserSync', 'fonts', ...];
 var config = {...};
 
 modular(gulp, tasks, config);
@@ -44,7 +44,7 @@ Detailed documentation of our best practice workflow and the config object will 
  - `bowerScripts` concats all scripts from the bower dependencies and stores the file to a particular distribution folder.
 
 ## Local Server
- - `connect` provides a small HTTP server for local testing. It serves the requested file if available, the `index.html` otherwise (to support Angular HTML5 mode)
+ - `browserSync` provides a small HTTP server for local testing. It serves the requested file if available, the `index.html` otherwise (to support Angular HTML5 mode)
  - `open` opens up the default web browser after the local HTTP server has started.
  - `reload` is responsible to reload the current page in the web browser whenever distribution files have changed.
  - `watch` checks files for changes and triggers the reload (see above).

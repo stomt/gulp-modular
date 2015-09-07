@@ -1,11 +1,10 @@
 'use strict';
 
-var connect = require('gulp-connect'),
-  protractor = require('gulp-protractor').protractor,
+var protractor = require('gulp-protractor').protractor,
   exit = require('gulp-exit');
 
 
-module.exports = function(gulp, src) {
+module.exports = function(gulp, browserSync, src) {
   gulp.task('protractor', function(done) {
     gulp.src(['e2e/**/*.js'])
       .pipe(protractor({
@@ -16,9 +15,9 @@ module.exports = function(gulp, src) {
       }).on('end', done);
   });
 
-  gulp.task('e2e:singleRun', ['connect', 'protractor'], function() {
+  gulp.task('e2e:singleRun', ['browserSync', 'protractor'], function() {
     gulp.src(src)
-      .pipe(connect.serverClose());
+      .pipe(browserSync.exit());
     gulp.src(src)
       .pipe(exit());
   });

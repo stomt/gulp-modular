@@ -2,7 +2,7 @@
 
 var liveReload = require('gulp-livereload');
 
-module.exports = function(gulp, tasks, config) {
+module.exports = function(gulp, tasks, browserSync, config) {
   gulp.task('watch', ['build'], function() {
     liveReload.listen();
     gulp.watch(config.app.index, ['justIndex']);
@@ -23,6 +23,6 @@ module.exports = function(gulp, tasks, config) {
     gulp.watch(config.app.js, ['scripts']);
     gulp.watch(config.bowerjson, ['bowerScripts', 'bowerStyles', 'bowerFonts']);
     // watch any change in dist folder; reload immediately in case of detected change
-    gulp.watch(config.bases.dist + '**', ['reload']);
+    gulp.watch([config.bases.dist + '**', '!**/*.css', '!**/*.css.map'], browserSync.reload);
   });
 };

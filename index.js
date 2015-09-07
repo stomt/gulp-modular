@@ -1,6 +1,8 @@
 'use strict';
 
 
+var browserSync = require('browser-sync').create();
+
 module.exports = function(gulp, tasks, config) {
 
   if (tasks.indexOf('bower') !== -1) {
@@ -19,8 +21,8 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/configScripts')(gulp, config.env.constants, config.configName, config.dist.js, config.env.rev);
   }
 
-  if (tasks.indexOf('connect') !== -1) {
-    require('./tasks/connect')(gulp, config.bases.dist, config.port);
+  if (tasks.indexOf('browserSync') !== -1) {
+    require('./tasks/browserSync')(gulp, browserSync, config.bases.dist, config.port);
   }
 
   if (tasks.indexOf('fonts') !== -1) {
@@ -64,15 +66,11 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('protractor') !== -1) {
-    require('./tasks/protractor')(gulp, config.bases.dist);
-  }
-
-  if (tasks.indexOf('reload') !== -1) {
-    require('./tasks/reload')(gulp, config.bases.dist);
+    require('./tasks/protractor')(gulp, browserSync, config.bases.dist);
   }
 
   if (tasks.indexOf('sass') !== -1) {
-    require('./tasks/sass')(gulp, tasks, config.app.scss, config.dist.css, config.env.rev, config.dist.fonts, config.sourceMapsPath);
+    require('./tasks/sass')(gulp, tasks, browserSync, config.app.scss, config.dist.css, config.env.rev, config.dist.fonts, config.sourceMapsPath);
   }
 
   if (tasks.indexOf('scripts') !== -1) {
@@ -96,7 +94,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('watch') !== -1) {
-    require('./tasks/watch')(gulp, tasks, config);
+    require('./tasks/watch')(gulp, tasks, browserSync, config);
   }
 
 };

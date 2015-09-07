@@ -1,3 +1,5 @@
+'use strict';
+
 var sass = require('gulp-sass'),
   sourceMaps = require('gulp-sourcemaps'),
   autoPrefixer = require('gulp-autoprefixer'),
@@ -7,7 +9,7 @@ var sass = require('gulp-sass'),
   _ = require('underscore');
 
 
-module.exports = function(gulp, tasks, src, dest, revFlag, manifestPath, sourceMapsPath) {
+module.exports = function(gulp, tasks, browserSync, src, dest, revFlag, manifestPath, sourceMapsPath) {
   var mergedTasks = _.intersection(tasks, ['fonts']);
   gulp.task('styles', mergedTasks, function (done) {
     var optionsSass = {
@@ -30,7 +32,8 @@ module.exports = function(gulp, tasks, src, dest, revFlag, manifestPath, sourceM
       .pipe(gulpif(revFlag, revReplace(optionsRev)))
       .pipe(gulpif(revFlag, rev()))
       .pipe(sourceMaps.write(sourceMapsPath))
-      .pipe(gulp.dest(dest));
+      .pipe(gulp.dest(dest))
+      .pipe(browserSync.stream({match: '**/*.css'}));
     done();
   });
 };
