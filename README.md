@@ -31,6 +31,7 @@ Detailed documentation of our best practice workflow and the config object will 
  - `bowerFonts` copies fonts defined in the bower dependencies to a particular distribution folder.
 
 ## Stylesheets
+ - `styles` to include your style files, choose one of the following two as your scss compiler:
  - `compass` compiles scss files to CSS files using [compass](https://github.com/Compass/compass).
  - `sass` compiles scss files to CSS using [gulp-sass](https://github.com/dlmanning/gulp-sass).
  - `bowerStyles` concats all styles from the bower dependencies and stores the file to a particular distribution folder.
@@ -46,7 +47,6 @@ Detailed documentation of our best practice workflow and the config object will 
 ## Local Server
  - `browserSync` provides a small HTTP server for local testing. It serves the requested file if available, the `index.html` otherwise (to support Angular HTML5 mode)
  - `open` opens up the default web browser after the local HTTP server has started.
- - `reload` is responsible to reload the current page in the web browser whenever distribution files have changed.
  - `watch` checks files for changes and triggers the reload (see above).
 
 ## Deploy
