@@ -11,11 +11,11 @@ module.exports = function(gulp, tasks, browserSync, config) {
       gulp.watch(config.app.views, ['partials']);
     }
 
-    if (tasks.indexOf('partials')) {
+    if (tasks.indexOf('statics')) {
       gulp.watch(config.app.statics, ['statics']);
     }
 
-    if (tasks.indexOf('partials')) {
+    if (tasks.indexOf('images')) {
       gulp.watch(config.app.images, ['images']);
     }
 
