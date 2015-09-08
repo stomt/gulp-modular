@@ -22,7 +22,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('browserSync') !== -1) {
-    require('./tasks/browserSync')(gulp, browserSync, config.bases.dist, config.port);
+    require('./tasks/browserSync')(gulp, browserSync, config.bases.dist, config.port, config.proxy);
   }
 
   if (tasks.indexOf('fonts') !== -1) {
