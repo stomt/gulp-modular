@@ -45,8 +45,7 @@ Detailed documentation of our best practice workflow and the config object will 
  - `bowerScripts` concats all scripts from the bower dependencies and stores the file to a particular distribution folder.
 
 ## Local Server
- - `browserSync` provides a small HTTP server for local testing. It serves the requested file if available, the `index.html` otherwise (to support Angular HTML5 mode)
- - `open` opens up the default web browser after the local HTTP server has started.
+ - `browserSync` provides a small HTTP server for local testing. It serves the requested file if available, the `index.html` otherwise (to support Angular HTML5 mode). It opens the default browser when the server has started.
  - `watch` checks files for changes and triggers the reload (see above).
 
 ## Deploy

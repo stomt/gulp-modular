@@ -57,10 +57,6 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/mavenInstall')(gulp, config.mavenConfig);
   }
 
-  if (tasks.indexOf('open') !== -1) {
-    require('./tasks/open')(gulp, config.dist, config.port);
-  }
-
   if (tasks.indexOf('partials') !== -1) {
     require('./tasks/partials')(gulp, config.app.views, config.dist.js, config.templateName, config.sourceMapsPath, config.env.rev);
   }

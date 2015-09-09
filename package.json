@@ -54,7 +54,6 @@
     "gulp-ng-annotate": "^1.0.0",
     "gulp-ng-constant": "^0.3.0",
     "gulp-ng-html2js": "^0.2.0",
-    "gulp-open": "^0.3.2",
     "gulp-preprocess": "^1.2.0",
     "gulp-protractor": "^1.0.0",
     "gulp-remember": "^0.3.0",
