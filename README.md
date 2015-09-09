@@ -29,6 +29,7 @@ Detailed documentation of our best practice workflow and the config object will 
  - `statics` copies static files to a particular distribution folder.
  - `fonts` copies local fonts to a particular distribution folder.
  - `bowerFonts` copies fonts defined in the bower dependencies to a particular distribution folder.
+ - `build` builds the application with all its artifacts.
 
 ## Stylesheets
  - `styles` to include your style files, choose one of the following two as your scss compiler:

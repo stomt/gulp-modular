@@ -85,4 +85,6 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/watch')(gulp, tasks, browserSync, config);
   }
 
+  require('./tasks/build')(gulp, tasks);
+
 };
