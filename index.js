@@ -45,10 +45,6 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/jshint')(gulp, config.app.alljs);
   }
 
-  if (tasks.indexOf('karma') !== -1) {
-    require('./tasks/karma')(gulp, tasks,  config.dirname);
-  }
-
   if (tasks.indexOf('mavenDeploy') !== -1) {
     require('./tasks/mavenDeploy')(gulp, config.mavenConfig, config.mavenRepo);
   }
@@ -59,10 +55,6 @@ module.exports = function(gulp, tasks, config) {
 
   if (tasks.indexOf('partials') !== -1) {
     require('./tasks/partials')(gulp, config.app.views, config.dist.js, config.templateName, config.sourceMapsPath, config.env.rev);
-  }
-
-  if (tasks.indexOf('protractor') !== -1) {
-    require('./tasks/protractor')(gulp, browserSync, config.bases.dist);
   }
 
   if (tasks.indexOf('sass') !== -1) {

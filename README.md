@@ -38,8 +38,6 @@ Detailed documentation of our best practice workflow and the config object will 
 
 ## AngularJS & JavaScript
  - `configScripts` creates a dedicated Angular module to provide a environment specific app configuration.
- - `karma` runs the karma test runner.
- - `protractor` runs protractor end-to-end tests.
  - `partials` collects all partials and combines them in a Angular module.
  - `scripts` connect all scripts, annotates, orders, concats and stores a the result to a file in a particular distribution folder.
  - `bowerScripts` concats all scripts from the bower dependencies and stores the file to a particular distribution folder.
