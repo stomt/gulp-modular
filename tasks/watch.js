@@ -1,10 +1,7 @@
 'use strict';
 
-var liveReload = require('gulp-livereload');
-
 module.exports = function(gulp, tasks, browserSync, config) {
   gulp.task('watch', ['build'], function() {
-    liveReload.listen();
     gulp.watch(config.app.index, ['justIndex']);
 
     if (tasks.indexOf('partials')) {
