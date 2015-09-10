@@ -17,10 +17,6 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/compass')(gulp, config.app.scss, config.dirname, config.bases.app, config.dist.css);
   }
 
-  if (tasks.indexOf('configScripts') !== -1) {
-    require('./tasks/configScripts')(gulp, config.env.constants, config.configName, config.dist.js, config.env.rev);
-  }
-
   if (tasks.indexOf('browserSync') !== -1) {
     require('./tasks/browserSync')(gulp, browserSync, config.bases.dist, config.port, config.proxy);
   }
@@ -53,16 +49,12 @@ module.exports = function(gulp, tasks, config) {
     require('./tasks/mavenInstall')(gulp, config.mavenConfig);
   }
 
-  if (tasks.indexOf('partials') !== -1) {
-    require('./tasks/partials')(gulp, config.app.views, config.dist.js, config.templateName, config.sourceMapsPath, config.env.rev);
-  }
-
   if (tasks.indexOf('sass') !== -1) {
     require('./tasks/sass')(gulp, tasks, browserSync, config.app.scss, config.dist.css, config.env.rev, config.dist.fonts, config.sourceMapsPath);
   }
 
   if (tasks.indexOf('scripts') !== -1) {
-    require('./tasks/scripts')(gulp, config.app.js, config.dist.js, config.sourceMapsPath, config.env.rev);
+    require('./tasks/scripts')(gulp, tasks, config);
   }
 
   if (tasks.indexOf('statics') !== -1) {

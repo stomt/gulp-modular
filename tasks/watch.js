@@ -5,7 +5,7 @@ module.exports = function(gulp, tasks, browserSync, config) {
     gulp.watch(config.app.index, ['justIndex']);
 
     if (tasks.indexOf('partials')) {
-      gulp.watch(config.app.views, ['partials']);
+      gulp.watch(config.app.views, ['scripts']);
     }
 
     if (tasks.indexOf('statics')) {

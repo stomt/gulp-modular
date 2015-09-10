@@ -15,7 +15,7 @@ module.exports = function(gulp, tasks, dest, index, appName) {
       read: false
     };
 
-    var jsFiles = ['js/vendor*.js', 'js/constants*.js', 'js/partials*.js', 'js/scripts*.js'];
+    var jsFiles = ['js/vendor*.js', 'js/scripts*.js'];
     var cssFiles = ['css/vendor*.css', 'css/style*.css'];
 
     // use relative paths with dist as base; remove the prepended '../dist' in the path
@@ -45,6 +45,6 @@ module.exports = function(gulp, tasks, dest, index, appName) {
   gulp.task('justIndex', injectIndex);
 
   // use this initial building
-  var mergedTasks = _.intersection(tasks, ['partials', 'configScripts', 'scripts', 'bowerScripts', 'styles', 'bowerStyles']);
+  var mergedTasks = _.intersection(tasks, ['scripts', 'bowerScripts', 'styles', 'bowerStyles']);
   gulp.task('index', mergedTasks, injectIndex);
 };
