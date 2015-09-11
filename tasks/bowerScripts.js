@@ -17,7 +17,7 @@ var jsFilter = {
   filter: /\.js$/i
 };
 
-module.exports = function(gulp, tasks, dest, sourceMapPath, debugFlag, revFlag) {
+module.exports = function(gulp, tasks, dest, sourceMapPath, debugFlag, revFlag, uglifyFlag) {
   var mergedTasks = _.intersection(tasks, ['bower:install', 'bower:prune']);
   gulp.task('bowerScripts', mergedTasks, function() {
     var result = gulp.src(bowerFiles(jsFilter))
@@ -25,7 +25,7 @@ module.exports = function(gulp, tasks, dest, sourceMapPath, debugFlag, revFlag) 
       .pipe(sourceMaps.init())
       .pipe(gulpif(isFirstRun, newer(dest + vendorFile)))
       .pipe(concat(vendorFile))
-      .pipe(uglify())
+      .pipe(gulpif(uglifyFlag, uglify()))
       .pipe(gulpif(revFlag, rev()))
       .pipe(sourceMaps.write(sourceMapPath))
       .pipe(gulp.dest(dest));

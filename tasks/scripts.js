@@ -54,7 +54,7 @@ module.exports = function(gulp, tasks, config) {
       .pipe(ngAnnotate())
       .pipe(ngFilesort())
       .pipe(concat(scriptsFile))
-      .pipe(uglify())
+      .pipe(gulpif(config.env.uglify, uglify()))
       .pipe(gulpif(config.env.rev, rev()))
       .pipe(sourceMaps.write(config.sourceMapsPath))
       .pipe(gulp.dest(config.dist.js));

@@ -10,7 +10,7 @@ var fontsFilter = {
   filter: /\.(otf|eot|svg|ttf|woff)/i
 };
 
-module.exports = function(gulp, tasks, debugFlag, dest, revFlag) {
+module.exports = function(gulp, tasks, dest, debugFlag, revFlag) {
   var mergedTasks = _.intersection(tasks, ['bower:install', 'bower:prune']);
   gulp.task('bowerFonts', mergedTasks, function() {
     return gulp.src(bowerFiles(fontsFilter))

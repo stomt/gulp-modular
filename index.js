@@ -62,11 +62,11 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('bowerFonts') !== -1) {
-    require('./tasks/bowerFonts')(gulp, tasks, config.debug, config.dist.fonts, config.env.rev);
+    require('./tasks/bowerFonts')(gulp, tasks, config.dist.fonts, config.debug, config.env.rev);
   }
 
   if (tasks.indexOf('bowerScripts') !== -1) {
-    require('./tasks/bowerScripts')(gulp, tasks, config.dist.js, config.sourceMapsPath, config.debug, config.env.rev);
+    require('./tasks/bowerScripts')(gulp, tasks, config.dist.js, config.sourceMapsPath, config.debug, config.env.rev, config.env.uglify);
   }
 
   if (tasks.indexOf('bowerStyles') !== -1) {
@@ -78,5 +78,9 @@ module.exports = function(gulp, tasks, config) {
   }
 
   require('./tasks/build')(gulp, tasks);
+
+  require('./tasks/serve')(gulp, tasks);
+
+  require('./tasks/default')(gulp, tasks);
 
 };
