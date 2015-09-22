@@ -6,6 +6,7 @@ var sass = require('gulp-sass'),
   gulpif = require('gulp-if'),
   rev = require('gulp-rev'),
   revReplace = require('gulp-rev-replace'),
+  nodeSassGlobbing = require('node-sass-globbing'),
   _ = require('underscore');
 
 
@@ -13,7 +14,8 @@ module.exports = function(gulp, tasks, browserSync, src, dest, revFlag, manifest
   var mergedTasks = _.intersection(tasks, ['fonts']);
   gulp.task('styles', mergedTasks, function (done) {
     var optionsSass = {
-      outputStyle: 'compressed'
+      outputStyle: 'compressed',
+      importer: nodeSassGlobbing
     };
 
     var optionsPrefixer = {

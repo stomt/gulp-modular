@@ -63,6 +63,7 @@
     "jshint-stylish": "^2.0.1",
     "main-bower-files": "^2.8.0",
     "merge-stream": "^1.0.0",
+    "node-sass-globbing": "0.0.23",
     "underscore": "^1.8.3"
   }
 }
