@@ -12,7 +12,7 @@ var sass = require('gulp-sass'),
 
 module.exports = function(gulp, tasks, browserSync, src, dest, revFlag, manifestPath, sourceMapsPath) {
   var mergedTasks = _.intersection(tasks, ['fonts']);
-  gulp.task('styles', mergedTasks, function (done) {
+  gulp.task('styles', mergedTasks, function () {
     var optionsSass = {
       outputStyle: 'compressed',
       importer: nodeSassGlobbing
@@ -27,7 +27,7 @@ module.exports = function(gulp, tasks, browserSync, src, dest, revFlag, manifest
       manifest: gulp.src('./' + manifestPath + 'rev-manifest.json')
     };
 
-    gulp.src(src)
+    return gulp.src(src)
       .pipe(sourceMaps.init())
       .pipe(sass(optionsSass).on('error', sass.logError))
       .pipe(autoPrefixer(optionsPrefixer))
@@ -36,6 +36,5 @@ module.exports = function(gulp, tasks, browserSync, src, dest, revFlag, manifest
       .pipe(sourceMaps.write(sourceMapsPath))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream({match: '**/*.css'}));
-    done();
   });
 };
