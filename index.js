@@ -34,7 +34,7 @@ module.exports = function(gulp, tasks, config) {
   }
 
   if (tasks.indexOf('index') !== -1) {
-    require('./tasks/index')(gulp, tasks, config.bases.dist, config.app.index, config.appName);
+    require('./tasks/index')(gulp, tasks, config.bases.dist, config.app.index, config.env.context);
   }
 
   if (tasks.indexOf('jshint') !== -1) {

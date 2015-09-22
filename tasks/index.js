@@ -7,7 +7,7 @@ var extend = require('extend'),
   preprocess = require('gulp-preprocess'),
   _ = require('underscore');
 
-module.exports = function(gulp, tasks, dest, index, appName) {
+module.exports = function(gulp, tasks, dest, index, context) {
   function injectIndex() {
     // don't read, just insert paths
     var srcOptions = {
@@ -28,9 +28,7 @@ module.exports = function(gulp, tasks, dest, index, appName) {
       .pipe(gulpInject(gulp.src(cssFiles, srcOptions), injectOptions))
       .pipe(gulpInject(gulp.src(jsFiles, srcOptions), extend({}, injectOptions)))
       .pipe(preprocess({
-        context: {
-          APP: appName
-        }
+        context: context
       }))
       .pipe(minifyInline())
       .pipe(minifyHtml({
