@@ -1,86 +1,89 @@
 'use strict';
 
+var browserSync = require('browser-sync').create(),
+  defaultConfig = require('./defaultConfiguration'),
+  _ = require('underscore');
 
-var browserSync = require('browser-sync').create();
+module.exports = function(gulp, userConfig) {
 
-module.exports = function(gulp, tasks, config) {
+  var configKeys = _.keys(userConfig);
 
-  if (tasks.indexOf('bower') !== -1) {
+  // initialize config with the single mandatory build property
+  var config = {
+    build: defaultConfig.build
+  };
+
+  configKeys.map(function(configKey) {
+    if (defaultConfig[configKey]) {
+      config[configKey] = _.assign(defaultConfig[configKey], userConfig[configKey]);
+    }
+  });
+
+  if (config.bower) {
     require('./tasks/bower')(gulp);
   }
 
-  if (tasks.indexOf('clean') !== -1) {
-    require('./tasks/clean')(gulp, config.bases.dist);
+  if (config.clean) {
+    require('./tasks/clean')(gulp, config);
   }
 
-  if (tasks.indexOf('compass') !== -1) {
-    require('./tasks/compass')(gulp, config.app.scss, config.dirname, config.bases.app, config.dist.css);
+  if (config.fonts) {
+    require('./tasks/fonts')(gulp, config);
   }
 
-  if (tasks.indexOf('browserSync') !== -1) {
-    require('./tasks/browserSync')(gulp, browserSync, config.bases.dist, config.port, config.proxy);
+  if (config.gitDeploy) {
+    require('./tasks/gitDeploy')(gulp, config);
   }
 
-  if (tasks.indexOf('fonts') !== -1) {
-    require('./tasks/fonts')(gulp, config.app.fonts, config.dist.fonts, config.env.rev);
+  if (config.images) {
+    require('./tasks/images')(gulp, config);
   }
 
-  if (tasks.indexOf('gitDeploy') !== -1) {
-    require('./tasks/gitDeploy')(gulp, config.bases.dist, config.env.deployBranch);
+  if (config.jshint) {
+    require('./tasks/jshint')(gulp, config);
   }
 
-  if (tasks.indexOf('images') !== -1) {
-    require('./tasks/images')(gulp, config.app.images, config.dist.images);
+  if (config.mavenDeploy) {
+    require('./tasks/mavenDeploy')(gulp, config);
   }
 
-  if (tasks.indexOf('index') !== -1) {
-    require('./tasks/index')(gulp, tasks, config.bases.dist, config.app.index, config.env.context);
+  if (config.mavenInstall) {
+    require('./tasks/mavenInstall')(gulp, config);
   }
 
-  if (tasks.indexOf('jshint') !== -1) {
-    require('./tasks/jshint')(gulp, config.app.alljs);
+  if (config.sass) {
+    require('./tasks/sass')(gulp, config, browserSync);
   }
 
-  if (tasks.indexOf('mavenDeploy') !== -1) {
-    require('./tasks/mavenDeploy')(gulp, config.mavenConfig, config.mavenRepo);
+  if (config.scripts) {
+    require('./tasks/scripts')(gulp, config);
   }
 
-  if (tasks.indexOf('mavenInstall') !== -1) {
-    require('./tasks/mavenInstall')(gulp, config.mavenConfig);
+  if (config.statics) {
+    require('./tasks/statics')(gulp, config);
   }
 
-  if (tasks.indexOf('sass') !== -1) {
-    require('./tasks/sass')(gulp, tasks, browserSync, config.app.scss, config.dist.css, config.env.rev, config.dist.fonts, config.sourceMapsPath);
+  if (config.bowerFonts) {
+    require('./tasks/bowerFonts')(gulp, config);
   }
 
-  if (tasks.indexOf('scripts') !== -1) {
-    require('./tasks/scripts')(gulp, tasks, config);
+  if (config.bowerScripts) {
+    require('./tasks/bowerScripts')(gulp, config);
   }
 
-  if (tasks.indexOf('statics') !== -1) {
-    require('./tasks/statics')(gulp, config.app.statics, config.bases.dist);
+  if (config.bowerStyles) {
+    require('./tasks/bowerStyles')(gulp, config);
   }
 
-  if (tasks.indexOf('bowerFonts') !== -1) {
-    require('./tasks/bowerFonts')(gulp, tasks, config.dist.fonts, config.debug, config.env.rev);
+  if (config.serve) {
+    require('./tasks/browserSync')(gulp, config, browserSync);
+    require('./tasks/watch')(gulp, config, browserSync);
   }
 
-  if (tasks.indexOf('bowerScripts') !== -1) {
-    require('./tasks/bowerScripts')(gulp, tasks, config.dist.js, config.sourceMapsPath, config.debug, config.env.rev, config.env.uglify);
-  }
-
-  if (tasks.indexOf('bowerStyles') !== -1) {
-    require('./tasks/bowerStyles')(gulp, tasks, config.dist.css, config.sourceMapsPath, config.debug, config.env.rev);
-  }
-
-  if (tasks.indexOf('watch') !== -1) {
-    require('./tasks/watch')(gulp, tasks, browserSync, config);
-  }
-
-  require('./tasks/build')(gulp, tasks);
-
-  require('./tasks/serve')(gulp, tasks);
-
-  require('./tasks/default')(gulp, tasks);
+  // mandatory tasks
+  require('./tasks/index')(gulp, config);
+  require('./tasks/build')(gulp, config);
+  require('./tasks/serve')(gulp, config);
+  require('./tasks/default')(gulp, config);
 
 };

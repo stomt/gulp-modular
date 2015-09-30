@@ -7,11 +7,11 @@ var extend = require('extend'),
   preprocess = require('gulp-preprocess'),
   _ = require('underscore');
 
-module.exports = function(gulp, tasks, dest, index, context) {
+module.exports = function(gulp, config) {
   function injectIndex() {
     // don't read, just insert paths
     var srcOptions = {
-      cwd: dest,
+      cwd: config.build.dest,
       read: false
     };
 
@@ -21,14 +21,16 @@ module.exports = function(gulp, tasks, dest, index, context) {
     // use relative paths with dist as base; remove the prepended '../dist' in the path
     var injectOptions = {
       relative: true,
-      ignorePath: '../' + dest
+      ignorePath: '../' + config.build.dest
     };
 
-    return gulp.src(index)
+    return gulp.src(config.build.index)
       .pipe(gulpInject(gulp.src(cssFiles, srcOptions), injectOptions))
       .pipe(gulpInject(gulp.src(jsFiles, srcOptions), extend({}, injectOptions)))
       .pipe(preprocess({
-        context: context
+        context: {
+          APP: config.build.context.APP
+        }
       }))
       .pipe(minifyInline())
       .pipe(minifyHtml({
@@ -36,13 +38,13 @@ module.exports = function(gulp, tasks, dest, index, context) {
         spare: true,
         quotes: true
       }))
-      .pipe(gulp.dest(dest));
+      .pipe(gulp.dest(config.build.dest));
   }
 
   // use this for watch
   gulp.task('justIndex', injectIndex);
 
   // use this initial building
-  var mergedTasks = _.intersection(tasks, ['scripts', 'bowerScripts', 'styles', 'bowerStyles']);
-  gulp.task('index', mergedTasks, injectIndex);
+  var tasks = _.intersection(_.keys(gulp.tasks), ['scripts', 'bowerScripts', 'styles', 'bowerStyles']);
+  gulp.task('index', tasks, injectIndex);
 };

@@ -10,14 +10,14 @@ var fontsFilter = {
   filter: /\.(otf|eot|svg|ttf|woff)/i
 };
 
-module.exports = function(gulp, tasks, dest, debugFlag, revFlag) {
-  var mergedTasks = _.intersection(tasks, ['bower:install', 'bower:prune']);
-  gulp.task('bowerFonts', mergedTasks, function() {
+module.exports = function(gulp, config) {
+  var tasks = _.intersection(_.keys(gulp.tasks), ['bower:install', 'bower:prune']);
+  gulp.task('bowerFonts', tasks, function() {
     return gulp.src(bowerFiles(fontsFilter))
-      .pipe(gulpif(debugFlag, debug()))
-      .pipe(gulpif(revFlag, rev()))
-      .pipe(gulp.dest(dest))
-      .pipe(gulpif(revFlag, rev.manifest()))
-      .pipe(gulpif(revFlag, gulp.dest(dest)));
+      .pipe(gulpif(config.build.bowerDebug, debug()))
+      .pipe(gulpif(config.build.rev, rev()))
+      .pipe(gulp.dest(config.bowerFonts.dest))
+      .pipe(gulpif(config.build.rev, rev.manifest()))
+      .pipe(gulpif(config.build.rev, gulp.dest(config.bowerFonts.dest)));
   });
 };

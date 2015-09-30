@@ -9,10 +9,9 @@ var sass = require('gulp-sass'),
   nodeSassGlobbing = require('node-sass-globbing'),
   _ = require('underscore');
 
-
-module.exports = function(gulp, tasks, browserSync, src, dest, revFlag, manifestPath, sourceMapsPath) {
-  var mergedTasks = _.intersection(tasks, ['fonts']);
-  gulp.task('styles', mergedTasks, function () {
+module.exports = function(gulp, config, browserSync) {
+  var tasks = _.intersection(_.keys(gulp.tasks), ['fonts']);
+  gulp.task('styles', tasks, function (done) {
     var optionsSass = {
       outputStyle: 'compressed',
       importer: nodeSassGlobbing
@@ -24,17 +23,18 @@ module.exports = function(gulp, tasks, browserSync, src, dest, revFlag, manifest
     };
 
     var optionsRev = {
-      manifest: gulp.src('./' + manifestPath + 'rev-manifest.json')
+      manifest: gulp.src('./' + config.fonts.dest + 'rev-manifest.json')
     };
 
-    return gulp.src(src)
+    gulp.src(config.styles.src)
       .pipe(sourceMaps.init())
       .pipe(sass(optionsSass).on('error', sass.logError))
       .pipe(autoPrefixer(optionsPrefixer))
-      .pipe(gulpif(revFlag, revReplace(optionsRev)))
-      .pipe(gulpif(revFlag, rev()))
-      .pipe(sourceMaps.write(sourceMapsPath))
-      .pipe(gulp.dest(dest))
+      .pipe(gulpif(config.build.rev, revReplace(optionsRev)))
+      .pipe(gulpif(config.build.rev, rev()))
+      .pipe(sourceMaps.write(config.build.sourceMapPath))
+      .pipe(gulp.dest(config.styles.dest))
       .pipe(browserSync.stream({match: '**/*.css'}));
+    done();
   });
 };

@@ -1,26 +1,42 @@
 'use strict';
 
-module.exports = function(gulp, tasks, browserSync, config) {
+module.exports = function(gulp, config, browserSync) {
   gulp.task('watch', ['build'], function() {
     gulp.watch(config.app.index, ['justIndex']);
 
-    if (tasks.indexOf('partials')) {
-      gulp.watch(config.app.views, ['scripts']);
+    if (config.scripts) {
+      gulp.watch(config.scripts.src, ['scripts']);
+
+      if (config.scripts.ng2html) {
+        gulp.watch(config.scripts.ng2html.src, ['scripts']);
+      }
     }
 
-    if (tasks.indexOf('statics')) {
-      gulp.watch(config.app.statics, ['statics']);
+    if (config.statics) {
+      gulp.watch(config.statics.src, ['statics']);
     }
 
-    if (tasks.indexOf('images')) {
-      gulp.watch(config.app.images, ['images']);
+    if (config.images) {
+      gulp.watch(config.images.src, ['images']);
     }
 
-    gulp.watch(config.app.scssAll, ['styles']);
-    gulp.watch(config.app.js, ['scripts']);
-    gulp.watch(config.bowerjson, ['bowerScripts', 'bowerStyles', 'bowerFonts']);
+    if (config.styles) {
+      gulp.watch(config.styles.src, ['styles']);
+    }
+
+    var bowerTasks = _.intersection(_.keys(gulp.tasks), ['bowerScripts', 'bowerStyles', 'bowerFonts']);
+    gulp.watch(config.build.bowerjson, bowerTasks);
+
     // watch any change in dist folder; reload immediately in case of detected change
+    var watchGlob = [config.build.dest + '**'];
+
     // don't watch CSS assets, these will be handled in sass by CSS injections by browserSync.stream
-    gulp.watch([config.bases.dist + '**', '!' + config.dist.css + '*', '!' + config.dist.fonts + '*'], browserSync.reload);
+    if (config.styles) {
+      watchGlob.push('!' + config.styles.dest + '*');
+    }
+    if (config.fonts) {
+      watchGlob.push('!' + config.fonts.dest + '*');
+    }
+    gulp.watch(watchGlob, browserSync.reload);
   });
 };

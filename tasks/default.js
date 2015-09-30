@@ -2,19 +2,16 @@
 
 var _ = require('underscore');
 
-
-module.exports = function(gulp, tasks) {
-  // check usage of syncTasks
-  var syncTasks = _.intersection(tasks, ['browserSync', 'watch']);
+module.exports = function(gulp) {
+  var tasks = _.intersection(_.keys(gulp.tasks), ['browserSync', 'watch']);
 
   // choose default task
   var defaultTask = [];
-  if (syncTasks.length > 0) {
-    defaultTask.push('serve');
+  if (tasks.length > 0) {
+    defaultTask = ['serve'];
   } else {
-    defaultTask.push('build');
+    defaultTask = ['build'];
   }
 
   gulp.task('default', defaultTask);
 };
-

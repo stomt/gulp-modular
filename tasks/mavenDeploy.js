@@ -2,12 +2,11 @@
 
 var maven = require('gulp-maven-deploy');
 
-
-module.exports = function(gulp, config, repo) {
+module.exports = function(gulp, config) {
   gulp.task('maven-deploy', ['build'], function() {
-    gulp.src('.')
+    gulp.src(config.mavenDeploy.src)
       .pipe(maven.deploy({
-        config: extend({}, config, {repositories: repo})
+        config: extend({}, config.mavenDeploy.config, {repositories: config.mavenDeploy.repo})
       }));
   });
 };

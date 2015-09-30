@@ -2,9 +2,8 @@
 
 var _ = require('underscore');
 
-
-module.exports = function(gulp, tasks) {
-  var mergedTasks = _.intersection(tasks, ['index', 'images', 'statics']);
-  gulp.task('build', mergedTasks);
+module.exports = function(gulp) {
+  var tasks = _.intersection(_.keys(gulp.tasks), ['index', 'images', 'statics']);
+  gulp.task('build', tasks);
 };
 

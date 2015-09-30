@@ -1,11 +1,11 @@
 'use strict';
 
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
+var jshint = require('gulp-jshint'),
+  stylish = require('jshint-stylish');
 
-module.exports = function(gulp, src) {
+module.exports = function(gulp, config) {
   gulp.task('jshint', function() {
-    return gulp.src(src)
+    return gulp.src(config.jshint.src)
       .pipe(jshint())
       .pipe(jshint.reporter(stylish));
   });

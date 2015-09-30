@@ -2,19 +2,19 @@
 
 var history = require('connect-history-api-fallback');
 
-module.exports = function(gulp, browserSync, root, port, proxy) {
+module.exports = function(gulp, config, browserSync) {
   gulp.task('browserSync', ['build'], function() {
-    if (proxy) {
+    if (config.serve.proxy) {
       browserSync.init({
-        proxy: proxy,
-        port: port
+        proxy: config.serve.proxy,
+        port: config.serve.port
       });
     } else {
       browserSync.init({
         server: {
-          baseDir: root
+          baseDir: config.serve.root
         },
-        port: port,
+        port: config.serve.port,
         middleware: [history()]
       });
     }

@@ -3,12 +3,12 @@
 var gulpif = require('gulp-if'),
   rev = require('gulp-rev');
 
-module.exports = function(gulp, src, dest, revFlag) {
+module.exports = function(gulp, config) {
   gulp.task('fonts', function () {
-    return gulp.src(src)
-      .pipe(gulpif(revFlag, rev()))
-      .pipe(gulp.dest(dest))
-      .pipe(gulpif(revFlag, rev.manifest()))
-      .pipe(gulpif(revFlag, gulp.dest(dest)));
+    return gulp.src(config.fonts.src)
+      .pipe(gulpif(config.build.rev, rev()))
+      .pipe(gulp.dest(config.fonts.dest))
+      .pipe(gulpif(config.build.rev, rev.manifest()))
+      .pipe(gulpif(config.build.rev, gulp.dest(config.fonts.dest)));
   });
 };

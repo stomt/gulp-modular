@@ -15,16 +15,16 @@ var sourceMaps = require('gulp-sourcemaps'),
 
 var scriptsFile = 'scripts.js';
 
-module.exports = function(gulp, tasks, config) {
+module.exports = function(gulp, config) {
   gulp.task('scripts', function() {
 
-    var scripts = gulp.src(config.app.js);
+    var scripts = gulp.src(config.scripts.src);
 
     // optionally add configScripts
-     if (tasks.indexOf('configScripts') !== -1) {
+     if (config.scripts.ngConstant) {
        var configScripts = ngConstant({
-         constants: config.env.constants,
-         name: config.configName,
+         constants: config.scripts.ngConstant.constants,
+         name: config.scripts.ngConstant.name,
          stream: true
        });
 
@@ -33,16 +33,16 @@ module.exports = function(gulp, tasks, config) {
 
 
     // optionally add partials
-    if (tasks.indexOf('partials') !== -1) {
-      var partials = gulp.src(config.app.views)
+    if (config.scripts.ng2html) {
+      var partials = gulp.src(config.scripts.ng2html.src)
         .pipe(minifyHtml({
           empty: true,
           spare: true,
           quotes: true
         }))
         .pipe(ngHtml2Js({
-          moduleName: config.templateName,
-          prefix: 'components/'
+          moduleName: config.scripts.ng2html.name,
+          prefix: config.scripts.ng2html.prefix
         }));
 
       scripts = mergeStream(scripts, partials);
@@ -54,10 +54,10 @@ module.exports = function(gulp, tasks, config) {
       .pipe(ngAnnotate())
       .pipe(ngFilesort())
       .pipe(concat(scriptsFile))
-      .pipe(gulpif(config.env.uglify, uglify()))
-      .pipe(gulpif(config.env.rev, rev()))
-      .pipe(sourceMaps.write(config.sourceMapsPath))
-      .pipe(gulp.dest(config.dist.js));
+      .pipe(gulpif(config.build.uglify, uglify()))
+      .pipe(gulpif(config.build.rev, rev()))
+      .pipe(sourceMaps.write(config.build.sourceMapPath))
+      .pipe(gulp.dest(config.scripts.dest));
   });
 };
 

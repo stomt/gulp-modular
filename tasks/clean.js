@@ -2,10 +2,9 @@
 
 var del = require('del');
 
-
-module.exports = function(gulp, glob) {
+module.exports = function(gulp, config) {
   // remove build (erase dist folder and other generated assets recursively)
   gulp.task('clean', function(done) {
-    del([glob], done);
+    del(config.clean.dest, done);
   });
 };
