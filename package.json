@@ -8,6 +8,8 @@
   },
   "files": [
     "index.js",
+    "defaultConfiguration.js",
+    "sample-gulpfile.js",
     "tasks"
   ],
   "repository": {
