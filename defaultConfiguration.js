@@ -34,7 +34,7 @@ module.exports = {
     dest: 'dist/images/'
   },
   fonts: {
-    src: 'app/fonts/**/*.{otf|eot|svg|ttf|woff}',
+    src: 'app/fonts/**/*.{otf,eot,svg,ttf,woff}',
     dest: 'dist/fonts/'
   },
   scripts: {
