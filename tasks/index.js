@@ -28,9 +28,7 @@ module.exports = function(gulp, config) {
       .pipe(gulpInject(gulp.src(cssFiles, srcOptions), injectOptions))
       .pipe(gulpInject(gulp.src(jsFiles, srcOptions), extend({}, injectOptions)))
       .pipe(preprocess({
-        context: {
-          APP: config.build.context.APP
-        }
+        context: config.build.context
       }))
       .pipe(minifyInline())
       .pipe(minifyHtml({
