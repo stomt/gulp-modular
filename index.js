@@ -51,7 +51,7 @@ module.exports = function(gulp, userConfig) {
     require('./tasks/mavenInstall')(gulp, config);
   }
 
-  if (config.sass) {
+  if (config.styles) {
     require('./tasks/sass')(gulp, config, browserSync);
   }
 
