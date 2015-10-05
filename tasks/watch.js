@@ -6,7 +6,13 @@ module.exports = function(gulp, config, browserSync) {
   gulp.task('watch', ['build'], function() {
     gulp.watch(config.build.index, ['justIndex']);
 
-w
+    if (config.scripts) {
+      gulp.watch(config.scripts.src, ['scripts']);
+
+      if (config.scripts.ng2html) {
+        gulp.watch(config.scripts.ng2html.src, ['scripts']);
+      }
+    }
 
     if (config.statics) {
       gulp.watch(config.statics.src, ['statics']);
