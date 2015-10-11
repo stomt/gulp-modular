@@ -1,4 +1,4 @@
-# gulp-modular
+# gulp-modular [![npm version](https://badge.fury.io/js/gulp-modular.svg)](https://www.npmjs.com/package/gulp-modular)
 Boilerplate gulp tasks for quick project setup.
 
 ## What is gulp-modular?
@@ -35,4 +35,4 @@ gulp.tasks['styles'] = function(gulp, config) {
 
 ## Examples
 We use gulp-modular in different private projects. However, a few public examples exist which may help you to set up gulp-modular for your project:
-* Check the [graFiddle gulpfile.js](https://github.com/GraFiddle/grafiddle/blob/develop/gulpfile.js)) on how to customize gulp-modular.
+* Check the [graFiddle gulpfile.js](https://github.com/GraFiddle/grafiddle/blob/develop/gulpfile.js) on how to customize gulp-modular.
