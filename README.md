@@ -28,7 +28,6 @@ var config = {...};
 modular(gulp, config);
 
 // 4) optionally decorate gulp tasks
-```javascript
 gulp.tasks['styles'] = function(gulp, config) {
   // define your stylus or less pipeline
 }
