@@ -1,16 +1,16 @@
 module.exports = {
   build: {
-    context: {
-      APP: 'app',
-      BASE: '/'
-    },
-    index: 'app/index.html',
     dest: 'dist/',
     bowerjson: 'bower.json',
     uglify: true,
     rev: false,
     bowerDebug: false,
     sourceMapPath: '.'
+  },
+  index: {
+    src: 'app/index.html',
+    APP: 'app',
+    BASE: '/'
   },
   clean: {
     dest: 'dist/'

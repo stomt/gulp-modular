@@ -24,11 +24,11 @@ module.exports = function(gulp, config) {
       ignorePath: '../' + config.build.dest
     };
 
-    return gulp.src(config.build.index)
+    return gulp.src(config.index.src)
       .pipe(gulpInject(gulp.src(cssFiles, srcOptions), injectOptions))
       .pipe(gulpInject(gulp.src(jsFiles, srcOptions), extend({}, injectOptions)))
       .pipe(preprocess({
-        context: config.build.context
+        context: config.index
       }))
       .pipe(minifyInline())
       .pipe(minifyHtml({

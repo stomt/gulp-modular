@@ -10,17 +10,19 @@ var config = {
 
   //// task `build` executes the following tasks (if activated): `index`, `images`, `statics`
   build: {
-    // context: { // define variables which can be used in index using <!-- @echo NAME -->
-    //   APP: 'app', // angular app name
-    //   BASE: '/' // base tag for html5mode
-    // },
-    //  index: 'app/index.html', // defines the root html file
     //  dest: 'dist/', // point to the distribution folder
     //  bowerjson: 'bower.json', // path to the bower.json file
     //  uglify: true, // minifies and compresses generated files
     //  rev: false, // append random revision postfixes to generated files
     //  bowerDebug: false, // prints gulp pipes from included bower files
     //  sourceMapPath: '.' // default (relative) path to place sourcemaps
+  },
+
+  //// task `index` automatically injects files and variables into the index file
+  index: {
+    // src: 'app/index.html',
+    // APP: 'app', // angular app name (can be used using <!-- @echo APP -->)
+    // BASE: '/' // base tag for html5mode
   },
 
   //// task [`clean`] provides removal of build artifacts
