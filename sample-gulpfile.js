@@ -20,7 +20,7 @@ var config = {
 
   //// task `index` automatically injects files and variables into the index file
   index: {
-    // src: 'app/index.html',
+    // src: 'app/index.html', // defines the root html file
     // APP: 'app', // angular app name (can be used using <!-- @echo APP -->)
     // BASE: '/' // base tag for html5mode
   },
