@@ -2,6 +2,7 @@
 Boilerplate gulp tasks for quick project setup.
 
 ## What is gulp-modular?
+<img align="right" src="gulp-modular.png">
  We were tired of creating and customizing more and more gulpfiles for every new project. 
 We decided to create gulp-modular, a collection of gulp tasks for a quick project setup. 
 gulp-modular ships with a bunch of pre-defined and pre-configured tasks without loosing the flexibility to refine, 
