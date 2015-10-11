@@ -47,7 +47,7 @@ Executes the tasks (if activated): `index`, `images`, `statics`
 * **sourceMapPath** `='.'` relative path to place sourcemaps
 * **rev** `=false` append random revision postfixes to generated script and stylesheet files
 * **bowerDebug** `=false` // prints gulp pipes from included bower files
-* **bowerjson** `='bower.json' path to the `bower.json` file, enables rebuild and reload when dependencies change 
+* **bowerjson** `='bower.json'` path to the `bower.json` file, enables rebuild and reload when dependencies change 
 
 ### index
 Required task in the configuration. It defines location of the `index.html` and applied preprocessors.
@@ -59,7 +59,7 @@ Required task in the configuration. It defines location of the `index.html` and 
 ### clean
 Optional task that enables deletion of all build artifacts.
 
-* **dest** `='dist/' glob pointing to all build artifacts
+* **dest** `='dist/'` glob pointing to all build artifacts
 
 ## Dependencies
 
@@ -88,19 +88,19 @@ Optional task bowerStyles collects styles from bower dependencies and stores the
 Optional task statics collects static files and stores them in a dedicated distribution folder.
 
 * **src** `=['app/.htaccess', 'app/favicon.ico', 'app/robots.txt']` glob that points to all static files
-* **dest** `='dist/' destination of the static files
+* **dest** `='dist/'` destination of the static files
 
 ### images
 Optional task images collects, flattens and minifies graphics before storing them in a dedicated distribution folder.
 
-* **src** `='app/components/**/*.{png,jpg,jpeg,gif,svg,ico}' glob that points to all images 
+* **src** `='app/components/**/*.{png,jpg,jpeg,gif,svg,ico}'` glob that points to all images 
 * **dest** `='dist/images/'` destination of the image files
 
 ### fonts
 Optional task fonts collects specified fonts and stores them in a dedicated distribution folder.
 
 * **src** `='app/fonts/**/*.{otf,eot,svg,ttf,woff}'` glob that points to all fonts
-* **dest** `='dist/fonts/' destination of the font files
+* **dest** `='dist/fonts/'` destination of the font files
 
 ### scripts
 Optional task scripts collects scripts, runs several transformations, concatenates everything and stores them in a dedicated distribution folder.
@@ -143,7 +143,7 @@ Optional task gitDeploy deploys to a specific branch in your git repository
 Optional task mavenInstall allows to install maven packages locally.
 
 * **src** `='.'` root of the maven package
-* **config** `={} the maven package config
+* **config** `={}` the maven package config
 
 ### mavenDeploy
 Optional task mavenDeploy allows to add maven packages to a remote server.
