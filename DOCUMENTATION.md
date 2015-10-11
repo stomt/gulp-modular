@@ -42,24 +42,24 @@ Required task in the configuration. It holds some global options.
 Registers the tasks `index`, `build`, `serve` and `default`.
 Executes the tasks (if activated): `index`, `images`, `statics`
 
-* **dest** (='dist/') path to the distribution folder
-* **uglify** (=true) uglyfies and compresses generated script files
-* **sourceMapPath** (='.') relative path to place sourcemaps
-* **rev** (=false) append random revision postfixes to generated script and stylesheet files
-* **bowerDebug** (=false), // prints gulp pipes from included bower files
-* **bowerjson** (='bower.json') path to the `bower.json` file, enables rebuild and reload when dependencies change 
+* **dest** `='dist/'` path to the distribution folder
+* **uglify** `=true` uglyfies and compresses generated script files
+* **sourceMapPath** `='.'` relative path to place sourcemaps
+* **rev** `=false` append random revision postfixes to generated script and stylesheet files
+* **bowerDebug** `=false` // prints gulp pipes from included bower files
+* **bowerjson** `='bower.json' path to the `bower.json` file, enables rebuild and reload when dependencies change 
 
 ### index
 Required task in the configuration. It defines location of the `index.html` and applied preprocessors.
  
-* **src** (='app/index.html') path to the root html file
-* **APP** (='app') angular app name via preprocessor by using `<!-- @echo NAME -->` in your `index.html`
-* **BASE** (='/') base tag for html5mode  via preprocessor by using `<!-- @echo BASE -->` in your `index.html`
+* **src** `='app/index.html'` path to the root html file
+* **APP** `='app'` angular app name via preprocessor by using `<!-- @echo NAME -->` in your `index.html`
+* **BASE** `='/'` base tag for html5mode  via preprocessor by using `<!-- @echo BASE -->` in your `index.html`
 
 ### clean
 Optional task that enables deletion of all build artifacts.
 
-* **dest** (='dist/') glob pointing to all build artifacts
+* **dest** `='dist/' glob pointing to all build artifacts
 
 ## Dependencies
 
@@ -70,92 +70,92 @@ Just add property `bower` to the configuration. This property has no options.
 ### bowerFonts
 Optional task bowerFonts collects fonts from bower dependencies and stores them in a dedicated distribution folder.
 
-* **dest** (='dist/fonts/') destination folder of the font files
+* **dest** `='dist/fonts/'` destination folder of the font files
 
 ### bowerScripts
 Optional task bowerScripts collects scripts from bower dependencies stores them in a dedicated distribution folder.
 
-* **dest** (='dist/js/') destination of the concat file `vendor.js` (and associated sourcemaps file)
+* **dest** `='dist/js/'` destination of the concat file `vendor.js` (and associated sourcemaps file)
 
 ### bowerStyles
 Optional task bowerStyles collects styles from bower dependencies and stores them in a dedicated distribution folder
 
-* **dest** (='dist/css/') destination of the concat file `vendor.css` (and associated sourcemaps file)
+* **dest** `='dist/css/'` destination of the concat file `vendor.css` (and associated sourcemaps file)
 
 ## User Space
 
 ### statics
 Optional task statics collects static files and stores them in a dedicated distribution folder.
 
-* **src** (=['app/.htaccess', 'app/favicon.ico', 'app/robots.txt']) glob that points to all static files
-* **dest** (='dist/')  destination of the static files
+* **src** `=['app/.htaccess', 'app/favicon.ico', 'app/robots.txt']` glob that points to all static files
+* **dest** `='dist/' destination of the static files
 
 ### images
 Optional task images collects, flattens and minifies graphics before storing them in a dedicated distribution folder.
 
-* **src** (='app/components/**/*.{png,jpg,jpeg,gif,svg,ico}') glob that points to all images 
-* **dest** (='dist/images/') destination of the image files
+* **src** `='app/components/**/*.{png,jpg,jpeg,gif,svg,ico}' glob that points to all images 
+* **dest** `='dist/images/'` destination of the image files
 
 ### fonts
 Optional task fonts collects specified fonts and stores them in a dedicated distribution folder.
 
-* **src** (='app/fonts/**/*.{otf,eot,svg,ttf,woff}') glob that points to all fonts
-* **dest** (='dist/fonts/') destination of the font files
+* **src** `='app/fonts/**/*.{otf,eot,svg,ttf,woff}'` glob that points to all fonts
+* **dest** `='dist/fonts/' destination of the font files
 
 ### scripts
 Optional task scripts collects scripts, runs several transformations, concatenates everything and stores them in a dedicated distribution folder.
 
-* **src** (=['app/components/**/*.js', '!app/components/**/*.spec.js']) glob that points to all scripts (except tests)
-* **dest** (='dist/js/') destination of the concat file `scripts.js` (and associated sourcemaps file)
-* **ng2html** (={}) adds ng2html and saves all html partials right into the AngularJS `$templateCache
-    * **src** (='app/components/**/*.html') glob that points to all partials
-    * **prefix** (='components/') prefix of the URL path
-    * **name** (='app.templates') the module name that contains the partials
-* **ngConstant** (={}) adds ngConstant to dynamically add variables to your AngularJS app
-    * **name** (='app.config') the module name that contains the variables
-    * **ngConstant** (={}), the object that contains the constants
+* **src** `=['app/components/**/*.js', '!app/components/**/*.spec.js']` glob that points to all scripts (except tests)
+* **dest** `='dist/js/'` destination of the concat file `scripts.js` (and associated sourcemaps file)
+* **ng2html** `={}` adds ng2html and saves all html partials right into the AngularJS `$templateCache
+    * **src** `='app/components/**/*.html'` glob that points to all partials
+    * **prefix** `='components/'` prefix of the URL path
+    * **name** `='app.templates'` the module name that contains the partials
+* **ngConstant** `={}` adds ngConstant to dynamically add variables to your AngularJS app
+    * **name** `='app.config'` the module name that contains the variables
+    * **ngConstant** `={}` the object that contains the constants
 
 ### styles
 Optional task styles collects styles (.scss), runs several transformations, concatenates everything and stores them in a dedicated distribution folder.
 
-* **src** (='app/style.scss') root SCSS file (imports are inside)
-* **dest** (='dist/css/') destination of the concat file `style.css` (and associated sourcemaps file)
+* **src** `='app/style.scss'` root SCSS file (imports are inside)
+* **dest** `='dist/css/'` destination of the concat file `style.css` (and associated sourcemaps file)
 
 ## Serving
 
 ### serve
 Optional property serve registers tasks `browserSync` to serve the app and `watch` to reload the app on detected file changes. 
 
-* **root** (='dist/') the root of the local server
-* **port** (=3000) the port of the local server
-* **proxy** (=undefined) host of locally served app that should be proxied to allow livereload
-* **watch** (=true) deactivates watches and automatic browser reloading
+* **root** `='dist/'` the root of the local server
+* **port** `=3000` the port of the local server
+* **proxy** `=undefined` host of locally served app that should be proxied to allow livereload
+* **watch** `=true` deactivates watches and automatic browser reloading
 
 ## Deployment
 
 ### gitDeploy
 Optional task gitDeploy deploys to a specific branch in your git repository
   
-* **src** (='dist/') the local root of the deploy repo
-* **branch** (=undefined) specifies git repository branch to deploy to
+* **src** `='dist/'` the local root of the deploy repo
+* **branch** '=undefined` specifies git repository branch to deploy to
 
 ### mavenInstall
 Optional task mavenInstall allows to install maven packages locally.
 
-* **src** (='.') root of the maven package
-* **config** (={}) the maven package config
+* **src** `='.'` root of the maven package
+* **config** `={} the maven package config
 
 ### mavenDeploy
 Optional task mavenDeploy allows to add maven packages to a remote server.
 
-* **src** (='.') root of the maven package
-* **config** (={}) the maven package config
-* **repo** (={}) the remove maven package repository
+* **src** `='.'` root of the maven package
+* **config** `={}` the maven package config
+* **repo** `={}` the remove maven package repository
 
 ## Testing
 
 ### jshint
 Optional task jshint lints code with respect to your `.jshintrc` files.
 
-* **src** (='app/components/**/*.js') glob specifying what to lint
+* **src** `='app/components/**/*.js'` glob specifying what to lint
 
