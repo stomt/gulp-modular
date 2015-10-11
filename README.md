@@ -27,8 +27,9 @@ var config = {...};
 // 3) pass gulp and configuration to gulp-modular
 modular(gulp, config);
 
-// 4) optionally decorate gulp tasks
-gulp.tasks['styles'] = function(gulp, config) {
+// 4) optionally decorate or entirely replace gulp tasks
+var stylesTask = gulp.tasks['styles']; // decorate: wrap `stylesTask` and re-assign (cf. replace)
+gulp.tasks['styles'] = function(gulp, config) { // replace entire task
   // define your stylus or less pipeline
 }
 ```
