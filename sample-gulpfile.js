@@ -42,7 +42,7 @@ var config = {
 
   //// task [`bowerScripts`] collects scripts from bower dependencies stores them in a dedicated distribution folder
   //bowerScripts: {
-  //  dest: 'dist/js/' // destination of the concat file `scripts.js` (and associated sourcemaps file)
+  //  dest: 'dist/js/' // destination of the concat file `vendor.js` (and associated sourcemaps file)
   //},
 
   //// task [`bowerStyles`] collects styles from bower dependencies and stores them in a dedicated distribution folder
@@ -101,7 +101,7 @@ var config = {
   //  watch: true // deactivates watches and automatic browser reloading
   //},
 
-  /***** Depolyment *****/
+  /***** Deployment *****/
 
   //// task [`gitDeploy`] deploys to a specific branch in your git repository
   //gitDeploy: {

@@ -1,53 +1,39 @@
 # gulp-modular
 Boilerplate gulp tasks for quick project setup.
 
-# Setup
- 1. `npm install gulp gulp-modular`
- 2. Create `gulpfile.js` (cf. [graFiddle gulpfile.js](https://github.com/GraFiddle/grafiddle/blob/develop/gulpfile.js)), require both modules and define tasks and configuration:
+## What is gulp-modular?
+ We were tired of creating and customizing more and more gulpfiles for every new project. 
+We decided to create gulp-modular, a collection of gulp tasks for a quick project setup. 
+gulp-modular ships with a bunch of pre-defined and pre-configured tasks without loosing the flexibility to refine, 
+replace or extend the tasks to suit your individual needs. We currently aim at Web Apps utilizing AngularJS 1.x. 
+However, we are happy to extend gulp-modular to incorporate specifics of other frameworks and libraries. 
+Just submit an issue or even better a PR :) 
+
+## Installation
+`npm install gulp gulp-modular`
+
+## Setup
+Copy `sample-gulpfile.js` from the gulp-modular root to your project and rename it to `gulpfile.js`. 
+Open the file and customize the tasks to match your specific project requirements. 
 
 ```javascript
+// 1) loading gulp and gup-modular
 var gulp = require('gulp');
 var modular = require('gulp-modular');
 
-var tasks = ['bower', 'clean', 'sass', 'configScripts', 'browserSync', 'fonts', ...];
+// 2) define the gulp-modular configuration 
 var config = {...};
 
-modular(gulp, tasks, config);
+// 3) pass gulp and configuration to gulp-modular
+modular(gulp, config);
+
+// 4) optionally decorate gulp tasks
+```javascript
+gulp.tasks['styles'] = function(gulp, config) {
+  // define your stylus or less pipeline
+}
 ```
 
-Detailed documentation of our best practice workflow and the config object will be added soon.
-
-# Tasks
-
-## General
- - `bower:install` to install packages defined in the `bower.json`.
- - `bower:prune` to remove packages that are not used anymore.
- - `images` collects graphics of different filetypes, flattens the paths and places them in a particular distribution folder.
- - `index` injects the transpiled JavaScript and CSS into the `index.html`.
- - `jshint` runs jshint linting tool.
- - `clean` removes the distribution folder with all its content.
- - `statics` copies static files to a particular distribution folder.
- - `fonts` copies local fonts to a particular distribution folder.
- - `bowerFonts` copies fonts defined in the bower dependencies to a particular distribution folder.
- - `build` builds the application with all its artifacts.
-
-## Stylesheets
- - `styles` to include your style files, choose one of the following two as your scss compiler:
- - `compass` compiles scss files to CSS files using [compass](https://github.com/Compass/compass).
- - `sass` compiles scss files to CSS using [gulp-sass](https://github.com/dlmanning/gulp-sass).
- - `bowerStyles` concats all styles from the bower dependencies and stores the file to a particular distribution folder.
-
-## AngularJS & JavaScript
- - `configScripts` creates a dedicated Angular module to provide a environment specific app configuration.
- - `partials` collects all partials and combines them in a Angular module.
- - `scripts` connect all scripts, annotates, orders, concats and stores a the result to a file in a particular distribution folder.
- - `bowerScripts` concats all scripts from the bower dependencies and stores the file to a particular distribution folder.
-
-## Local Server
- - `browserSync` provides a small HTTP server for local testing. It serves the requested file if available, the `index.html` otherwise (to support Angular HTML5 mode). It opens the default browser when the server has started.
- - `watch` checks files for changes and triggers the reload (see above).
-
-## Deploy
- - `mavenDeploy` creates a maven package and uploads it to a custom repository.
- - `mavenInstall` creates a snapshot maven package and installs it on the local machine.
- - `gitDeploy` saves the compiled files in a specified git branch and pushes this branch.
+## Examples
+We use gulp-modular in different private projects. However, a few public examples exist which may help you to set up gulp-modular for your project:
+* Check the [graFiddle gulpfile.js](https://github.com/GraFiddle/grafiddle/blob/develop/gulpfile.js)) on how to customize gulp-modular.
