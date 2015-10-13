@@ -29,6 +29,9 @@ var config = {...};
 modular(gulp, config);
 ```
 
+## Configuration
+Check the [DOCUMENTATION](DOCUMENTATION.md) for all pre-defined tasks and their configuration options.
+
 ## Extending, Decorating, Replacing
 Optionally decorate, replace or extend gulp tasks via the usual gulp API.
 
