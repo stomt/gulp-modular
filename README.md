@@ -27,10 +27,17 @@ var config = {...};
 
 // 3) pass gulp and configuration to gulp-modular
 modular(gulp, config);
+```
 
-// 4) optionally decorate or entirely replace gulp tasks
+## Extending, Decorating, Replacing
+Optionally decorate, replace or extend gulp tasks via the usual gulp API.
+
+```javascript
+// Optionally decorate gulp tasks
 var stylesTask = gulp.tasks['styles']; // decorate: wrap `stylesTask` and re-assign (cf. replace)
-gulp.task('styles', changedDependencies, function() { // replace entire task and/or change deps
+
+// Optionally extend/replace gulp tasks
+gulp.task('styles', changedDependencies, function() { // replace entire task and/or change dependencies
   // e.g. define your stylus or less pipeline
 });
 ```
