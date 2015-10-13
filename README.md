@@ -11,7 +11,7 @@ However, we are happy to extend gulp-modular to incorporate specifics of other f
 Just submit an issue or even better a PR :) 
 
 ## Installation
-`npm install gulp gulp-modular`
+`npm install gulp gulp-modular --save-dev`
 
 ## Setup
 Copy `sample-gulpfile.js` from the gulp-modular root to your project and rename it to `gulpfile.js`. 
