@@ -37,4 +37,6 @@ gulp.task('styles', changedDependencies, function() { // replace entire task and
 
 ## Examples
 We use gulp-modular in different private projects. However, a few public examples exist which may help you to set up gulp-modular for your project:
-* Check the [graFiddle gulpfile.js](https://github.com/GraFiddle/grafiddle/blob/develop/gulpfile.js) on how to customize gulp-modular.
+
+* [angular-sample-app](https://github.com/maxklenk/angular-sample-app/blob/master/gulpfile.js) 
+* [graFiddle](https://github.com/GraFiddle/grafiddle/blob/develop/gulpfile.js)
