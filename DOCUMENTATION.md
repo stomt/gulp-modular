@@ -119,6 +119,7 @@ Optional task scripts collects scripts, runs several transformations, concatenat
 Optional task styles collects styles (.scss), runs several transformations, concatenates everything and stores them in a dedicated distribution folder.
 
 * **src** `='app/style.scss'` root SCSS file (imports are inside)
+* **files** `='app/**/*.scss'` all SCSS files that have to be watched for changes
 * **dest** `='dist/css/'` destination of the concat file `style.css` (and associated sourcemaps file)
 
 ## Serving

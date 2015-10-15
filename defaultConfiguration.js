@@ -52,6 +52,7 @@ module.exports = {
   },
   styles: {
     src: 'app/style.scss',
+    files: 'app/**/*.scss',
     dest: 'dist/css/'
   },
   serve: {

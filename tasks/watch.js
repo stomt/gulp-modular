@@ -23,7 +23,7 @@ module.exports = function(gulp, config, browserSync) {
     }
 
     if (config.styles) {
-      gulp.watch(config.styles.src, ['styles']);
+      gulp.watch(config.styles.files, ['styles']);
     }
 
     var bowerTasks = _.intersection(_.keys(gulp.tasks), ['bowerScripts', 'bowerStyles', 'bowerFonts']);
