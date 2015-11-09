@@ -112,13 +112,13 @@ var config = {
 
   //// task [`mavenInstall`] allows to install maven packages locally
   //mavenInstall: {
-  //  src: '.', root of the maven package
+  //  src: '.', // root of the maven package
   //  config: {} // the maven package config
   //},
 
   //// task [`mavenDeploy`] allows to add maven packages to a remote server
   //mavenDeploy: {
-  //  src: '.', root of the maven package
+  //  src: '.', // root of the maven package
   //  config: {}, // the maven package config
   //  repo: {} // the remove maven package repository
   //},
