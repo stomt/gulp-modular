@@ -22,15 +22,17 @@ module.exports = function(gulp, config, browserSync) {
       cascade: false
     };
 
-    var optionsRev = {
-      manifest: gulp.src('./' + config.fonts.dest + 'rev-manifest.json')
-    };
+    if (config.build.rev && config.fonts) {
+      var optionsRev = {
+        manifest: gulp.src('./' + config.fonts.dest + 'rev-manifest.json')
+      };
+    }
 
     return gulp.src(config.styles.src)
       .pipe(sourceMaps.init())
       .pipe(sass(optionsSass).on('error', sass.logError))
       .pipe(autoPrefixer(optionsPrefixer))
-      .pipe(gulpif(config.build.rev, revReplace(optionsRev)))
+      .pipe(gulpif(config.build.rev && config.fonts, revReplace(optionsRev)))
       .pipe(gulpif(config.build.rev, rev()))
       .pipe(sourceMaps.write(config.build.sourceMapPath))
       .pipe(gulp.dest(config.styles.dest))
