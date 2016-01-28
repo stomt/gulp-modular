@@ -1,6 +1,7 @@
 'use strict';
 
-var maven = require('gulp-maven-deploy');
+var extend = require('extend'),
+  maven = require('gulp-maven-deploy');
 
 module.exports = function(gulp, config) {
   gulp.task('maven-deploy', ['build'], function() {
