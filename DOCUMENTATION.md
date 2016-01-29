@@ -45,8 +45,8 @@ Executes the tasks (if activated): `index`, `images`, `statics`
 * **dest** `='dist/'` path to the distribution folder
 * **uglify** `=true` uglyfies and compresses generated script files
 * **sourceMapPath** `='.'` relative path to place sourcemaps
-* **rev** `=false` append random revision postfixes to generated script and stylesheet files
-* **bowerDebug** `=false` // prints gulp pipes from included bower files
+* **rev** `=false` append content hash to generated script and stylesheet files
+* **bowerDebug** `=false` prints gulp pipes from included bower files
 * **bowerjson** `='bower.json'` path to the `bower.json` file, enables rebuild and reload when dependencies change 
 
 ### index

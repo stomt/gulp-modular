@@ -29,7 +29,9 @@ module.exports = function(gulp, config) {
       }))
       .pipe(gulpif(config.build.rev, rev()))
       .pipe(sourceMaps.write(config.build.sourceMapPath))
-      .pipe(gulp.dest(config.bowerStyles.dest));
+      .pipe(gulp.dest(config.bowerStyles.dest))
+      .pipe(gulpif(config.build.rev, rev.manifest({merge: true})))
+      .pipe(gulpif(config.build.rev, gulp.dest(config.statics.dest)));
 
     isFirstRun = false;
 

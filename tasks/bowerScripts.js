@@ -27,7 +27,9 @@ module.exports = function(gulp, config) {
       .pipe(gulpif(config.build.uglify, uglify()))
       .pipe(gulpif(config.build.rev, rev()))
       .pipe(sourceMaps.write(config.build.sourceMapPath))
-      .pipe(gulp.dest(config.bowerScripts.dest));
+      .pipe(gulp.dest(config.bowerScripts.dest))
+      .pipe(gulpif(config.build.rev, rev.manifest({cwd: config.statics.dest, merge: true})))
+      .pipe(gulpif(config.build.rev, gulp.dest(config.statics.dest)));
 
     isFirstRun = false;
     return result;
