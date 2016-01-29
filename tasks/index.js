@@ -21,7 +21,8 @@ module.exports = function(gulp, config) {
     // use relative paths with dist as base; remove the prepended '../dist' in the path
     var injectOptions = {
       relative: true,
-      ignorePath: '../' + config.build.dest
+      ignorePath: '../' + config.build.dest,
+      addPrefix: config.build.cdn
     };
 
     return gulp.src(config.index.src)

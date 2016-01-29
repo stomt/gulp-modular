@@ -5,7 +5,8 @@ module.exports = {
     uglify: true,
     rev: false,
     bowerDebug: false,
-    sourceMapPath: '.'
+    sourceMapPath: '.',
+    cdn: ''
   },
   index: {
     src: 'app/index.html',

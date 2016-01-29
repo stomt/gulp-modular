@@ -48,6 +48,7 @@ Executes the tasks (if activated): `index`, `images`, `statics`
 * **rev** `=false` append content hash to generated script and stylesheet files
 * **bowerDebug** `=false` prints gulp pipes from included bower files
 * **bowerjson** `='bower.json'` path to the `bower.json` file, enables rebuild and reload when dependencies change 
+* **cdn** `=''` path to cdn host of static files, files injected to index will be prefixed with it
 
 ### index
 Required task in the configuration. It defines location of the `index.html` and applied preprocessors.
