@@ -44,6 +44,6 @@ module.exports = function(gulp, config) {
   gulp.task('justIndex', injectIndex);
 
   // use this initial building
-  var tasks = _.intersection(_.keys(gulp.tasks), ['scripts', 'bowerScripts', 'styles', 'bowerStyles']);
+  var tasks = _.intersection(_.keys(gulp.tasks), ['scripts', 'bowerScripts', 'styles', 'bowerStyles', 'bowerFonts']);
   gulp.task('index', tasks, injectIndex);
 };
