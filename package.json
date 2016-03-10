@@ -1,6 +1,6 @@
 {
   "name": "gulp-modular",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Boilerplate gulp tasks for quick project setup.",
   "main": "index.js",
   "scripts": {
