@@ -11,7 +11,7 @@ var sourceMaps = require('gulp-sourcemaps'),
   rev = require('gulp-rev'),
   uglify = require('gulp-uglify'),
   plumber = require('gulp-plumber'),
-  iife = require('gulp-iife'),
+  babel = require("gulp-babel"),
   mergeStream = require('merge-stream');
 
 var scriptsFile = 'scripts.js';
@@ -52,7 +52,7 @@ module.exports = function(gulp, config) {
     return scripts
       .pipe(plumber())
       .pipe(sourceMaps.init())
-      .pipe(iife())
+      .pipe(babel())
       .pipe(ngAnnotate())
       .pipe(ngFilesort())
       .pipe(concat(scriptsFile))
