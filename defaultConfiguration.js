@@ -2,6 +2,7 @@ module.exports = {
   build: {
     dest: 'dist/',
     bowerjson: 'bower.json',
+    babel: false,
     uglify: true,
     rev: false,
     bowerDebug: false,

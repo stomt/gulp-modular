@@ -12,6 +12,7 @@ var config = {
   build: {
     //  dest: 'dist/', // point to the distribution folder
     //  bowerjson: 'bower.json', // path to the bower.json file
+    //  babel: false, // uses babel to transpile ES6/ES2015 to ES5
     //  uglify: true, // minifies and compresses generated files
     //  rev: false, // append random revision postfixes to generated files
     //  bowerDebug: false, // prints gulp pipes from included bower files

@@ -43,6 +43,7 @@ Registers the tasks `index`, `build`, `serve` and `default`.
 Executes the tasks (if activated): `index`, `images`, `statics`
 
 * **dest** `='dist/'` path to the distribution folder
+* **babel** `=false` uses babel to transpile ES6/ES2015 to ES5, you have to [add a preset](http://babeljs.io/docs/setup/#gulp) 
 * **uglify** `=true` uglyfies and compresses generated script files
 * **sourceMapPath** `='.'` relative path to place sourcemaps
 * **rev** `=false` append content hash to generated script and stylesheet files
