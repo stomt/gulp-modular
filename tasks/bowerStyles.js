@@ -7,7 +7,7 @@ var bowerFiles = require('main-bower-files'),
   newer = require('gulp-newer'),
   concat = require('gulp-concat'),
   rev = require('gulp-rev'),
-  minifyCSS = require('gulp-minify-css'),
+  cleanCSS = require('gulp-clean-css'),
   _ = require('underscore');
 
 var isFirstRun = true;
@@ -24,9 +24,7 @@ module.exports = function(gulp, config) {
       .pipe(sourceMaps.init())
       .pipe(gulpif(isFirstRun, newer(config.bowerStyles.dest + vendorFile)))
       .pipe(concat(vendorFile))
-      .pipe(minifyCSS({
-        keepSpecialComments: 0
-      }))
+      .pipe(cleanCSS())
       .pipe(gulpif(config.build.rev, rev()))
       .pipe(sourceMaps.write(config.build.sourceMapPath))
       .pipe(gulp.dest(config.bowerStyles.dest))
