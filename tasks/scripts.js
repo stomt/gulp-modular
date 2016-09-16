@@ -12,7 +12,8 @@ var sourceMaps = require('gulp-sourcemaps'),
   uglify = require('gulp-uglify'),
   plumber = require('gulp-plumber'),
   iife = require('gulp-iife'),
-  babel = require("gulp-babel"),
+  babel = require('gulp-babel'),
+  preprocess = require('gulp-preprocess'),
   mergeStream = require('merge-stream');
 
 var scriptsFile = 'scripts.js';
@@ -20,7 +21,8 @@ var scriptsFile = 'scripts.js';
 module.exports = function(gulp, config) {
   gulp.task('scripts', function() {
 
-    var scripts = gulp.src(config.scripts.src);
+    var scripts = gulp.src(config.scripts.src)
+      .pipe(gulpif(config.preprocess && config.preprocess.apply.scripts, preprocess(config.preprocess)));
 
     // optionally add configScripts
      if (config.scripts.ngConstant) {
@@ -37,6 +39,7 @@ module.exports = function(gulp, config) {
     // optionally add partials
     if (config.scripts.ng2html) {
       var partials = gulp.src(config.scripts.ng2html.src)
+        .pipe(gulpif(config.preprocess && config.preprocess.apply.html, preprocess(config.preprocess)))
         .pipe(minifyHtml({
           empty: true,
           spare: true,

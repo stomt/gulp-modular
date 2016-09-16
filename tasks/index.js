@@ -5,6 +5,7 @@ var extend = require('extend'),
   minifyInline = require('gulp-minify-inline'),
   minifyHtml = require('gulp-minify-html'),
   preprocess = require('gulp-preprocess'),
+  gulpif = require('gulp-if'),
   _ = require('underscore');
 
 module.exports = function(gulp, config) {
@@ -25,12 +26,10 @@ module.exports = function(gulp, config) {
       addPrefix: config.build.cdn
     };
 
-    return gulp.src(config.index.src)
+    return gulp.src(config.build.index)
       .pipe(gulpInject(gulp.src(cssFiles, srcOptions), injectOptions))
       .pipe(gulpInject(gulp.src(jsFiles, srcOptions), extend({}, injectOptions)))
-      .pipe(preprocess({
-        context: config.index
-      }))
+      .pipe(gulpif(config.preprocess && config.preprocess.apply.index, preprocess(config.preprocess)))
       .pipe(minifyInline())
       .pipe(minifyHtml({
         empty: true,

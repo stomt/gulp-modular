@@ -7,6 +7,7 @@ var sass = require('gulp-sass'),
   rev = require('gulp-rev'),
   revReplace = require('gulp-rev-replace'),
   nodeSassGlobbing = require('node-sass-globbing'),
+  preprocess = require('gulp-preprocess'),
   _ = require('underscore');
 
 module.exports = function(gulp, config, browserSync) {
@@ -25,6 +26,7 @@ module.exports = function(gulp, config, browserSync) {
 
     return gulp.src(config.styles.src)
       .pipe(sourceMaps.init())
+      .pipe(gulpif(config.preprocess && config.preprocess.apply.styles, preprocess(config.preprocess)))
       .pipe(sass(optionsSass).on('error', sass.logError))
       .pipe(autoPrefixer(config.styles.prefixer))
       .pipe(gulpif(config.build.rev && config.fonts, revReplace(optionsRev)))

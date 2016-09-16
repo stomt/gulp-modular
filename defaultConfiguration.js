@@ -7,12 +7,20 @@ module.exports = {
     rev: false,
     bowerDebug: false,
     sourceMapPath: '.',
-    cdn: ''
+    cdn: '',
+    index: 'app/index.html'
   },
-  index: {
-    src: 'app/index.html',
-    APP: 'app',
-    BASE: '/'
+  preprocess: {
+    apply: {
+      index: true,
+      html: false,
+      scripts: false,
+      styles: false
+    },
+    context: {
+      APP: 'app',
+      BASE: '/'
+    }
   },
   clean: {
     dest: 'dist/'

@@ -50,13 +50,19 @@ Executes the tasks (if activated): `index`, `images`, `statics`
 * **bowerDebug** `=false` prints gulp pipes from included bower files
 * **bowerjson** `='bower.json'` path to the `bower.json` file, enables rebuild and reload when dependencies change 
 * **cdn** `=''` path to cdn host of static files, files injected to index will be prefixed with it
+* **index** `='app/index.html'` path to the root html file
 
-### index
-Required task in the configuration. It defines location of the `index.html` and applied preprocessors.
- 
-* **src** `='app/index.html'` path to the root html file
-* **APP** `='app'` angular app name via preprocessor by using `<!-- @echo NAME -->` in your `index.html`
-* **BASE** `='/'` base tag for html5mode  via preprocessor by using `<!-- @echo BASE -->` in your `index.html`
+### preprocess
+Optional task in the configuration. It defines where to apply the preprocessor.
+
+* **apply** `={}` file types which should be preprocessed
+    * **index** `=true` the index file
+    * **html** `=false` all html templates
+    * **scripts** `=false` all JavaScript files
+    * **styles** `=false` all scss files
+* **context** `={}` values which can be used by the preprocessor
+    * **APP** `='app'` angular app name via preprocessor by using `<!-- @echo NAME -->` in your `index.html`
+    * **BASE** `='/'` base tag for html5mode  via preprocessor by using `<!-- @echo BASE -->` in your `index.html`
 
 ### clean
 Optional task that enables deletion of all build artifacts.
