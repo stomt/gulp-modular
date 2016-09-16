@@ -17,11 +17,6 @@ module.exports = function(gulp, config, browserSync) {
       importer: nodeSassGlobbing
     };
 
-    var optionsPrefixer = {
-      browsers: ['last 2 versions'],
-      cascade: false
-    };
-
     if (config.build.rev && config.fonts) {
       var optionsRev = {
         manifest: gulp.src('./' + config.fonts.dest + 'rev-manifest.json')
@@ -31,7 +26,7 @@ module.exports = function(gulp, config, browserSync) {
     return gulp.src(config.styles.src)
       .pipe(sourceMaps.init())
       .pipe(sass(optionsSass).on('error', sass.logError))
-      .pipe(autoPrefixer(optionsPrefixer))
+      .pipe(autoPrefixer(config.styles.prefixer))
       .pipe(gulpif(config.build.rev && config.fonts, revReplace(optionsRev)))
       .pipe(gulpif(config.build.rev, rev()))
       .pipe(sourceMaps.write(config.build.sourceMapPath))

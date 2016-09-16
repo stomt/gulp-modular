@@ -55,7 +55,11 @@ module.exports = {
   styles: {
     src: 'app/style.scss',
     files: 'app/**/*.scss',
-    dest: 'dist/css/'
+    dest: 'dist/css/',
+    prefixer: {
+      browsers: ['last 2 versions'],
+      cascade: false
+    }
   },
   serve: {
     root: 'dist/',

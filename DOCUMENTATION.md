@@ -123,6 +123,9 @@ Optional task styles collects styles (.scss), runs several transformations, conc
 * **src** `='app/style.scss'` root SCSS file (imports are inside)
 * **files** `='app/**/*.scss'` all SCSS files that have to be watched for changes
 * **dest** `='dist/css/'` destination of the concat file `style.css` (and associated sourcemaps file)
+* **prefixer** `={}` all [autoprefixer options](https://github.com/postcss/autoprefixer#options) can be set here
+    * **browsers** `=['last 2 versions']` list of browsers, which are supported in your project
+    * **cascade** `=false` should Autoprefixer use Visual Cascade
 
 ## Serving
 
