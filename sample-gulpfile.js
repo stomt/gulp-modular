@@ -16,14 +16,22 @@ var config = {
     //  uglify: true, // minifies and compresses generated files
     //  rev: false, // append random revision postfixes to generated files
     //  bowerDebug: false, // prints gulp pipes from included bower files
-    //  sourceMapPath: '.' // default (relative) path to place sourcemaps
+    //  sourceMapPath: '.', // default (relative) path to place sourcemaps
+    //  index: 'app/index.html' // defines the root html file
   },
 
-  //// task `index` automatically injects files and variables into the index file
-  index: {
-    // src: 'app/index.html', // defines the root html file
-    // APP: 'app', // angular app name (can be used using <!-- @echo APP -->)
-    // BASE: '/' // base tag for html5mode
+  //// task `preprocess` automatically injects variables into your files
+  preprocess: {
+    // apply: {
+    //   index: true,
+    //   html: false,
+    //   scripts: false,
+    //   styles: false
+    // },
+    // context: {
+    //   APP: 'app', // angular app name (can be used using <!-- @echo APP -->)
+    //   BASE: '/' // base tag for html5mode
+    // }
   },
 
   //// task [`clean`] provides removal of build artifacts
@@ -91,6 +99,10 @@ var config = {
   //  src: 'app/style.scss', // root SCSS file (imports are inside)
   //  files: 'app/**/*.scss', // all SCSS files that have to be watched for changes
   //  dest: 'dist/css/' // destination of the concat file `style.css` (and associated sourcemaps file)
+  //  prefixer: { // all autoprefixer options (https://github.com/postcss/autoprefixer#options) can be set here
+  //    browsers: ['last 2 versions'], // list of browsers, which are supported in your project
+  //    cascade: false // should autoprefixer use visual cascade
+  //  }
   //},
 
   /***** Serving *****/
