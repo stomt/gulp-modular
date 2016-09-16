@@ -86,4 +86,5 @@ module.exports = function(gulp, userConfig) {
   require('./tasks/serve')(gulp, config);
   require('./tasks/default')(gulp, config);
 
+  return config;
 };
