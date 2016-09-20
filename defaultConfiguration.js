@@ -47,6 +47,16 @@ module.exports = {
     src: 'app/fonts/**/*.{otf,eot,svg,ttf,woff}',
     dest: 'dist/fonts/'
   },
+  markdown: {
+    src: 'src/content/**/*.md',
+    dest: 'dist/',
+    layouts: {
+      src: 'src/layouts/',
+      partials: 'src/layouts/partials/',
+      engine: 'handlebars',
+      layout: 'default.hbs'
+    }
+  },
   scripts: {
     src: ['app/components/**/*.js', '!app/components/**/*.spec.js'],
     dest: 'dist/js/',

@@ -79,7 +79,18 @@ var config = {
   //  dest: 'dist/fonts/' // destination of the font files
   //},
 
-  //// task [`scripts`] collects scripts, runs several transformations and concatenates everything
+  // // task [`markdown`] converts markdown to html and applies styles.
+  // markdown: {
+  //   src: 'src/content/**/*.md', // glob that points to all content files
+  //   dest: 'dist/', // destination of the generated html files
+  //   layouts: {
+  //     src: 'src/layouts', // path where partial layouts can be found
+  //     partials: 'src/layouts/partials', // path where partial layouts can be found
+  //     engine: 'handlebars', // any layout engine supported by consolidate.js
+  //     layout: 'default.hbs' // default layout to apply when none is specified in the markdown frontmatter
+  // },
+
+//// task [`scripts`] collects scripts, runs several transformations and concatenates everything
   //scripts: {
   //  src: ['app/components/**/*.js', '!app/components/**/*.spec.js'], // glob that points to all scripts (except tests)
   //  dest: 'dist/js/', // destination of the concat file `scripts.js` (and associated sourcemaps file)

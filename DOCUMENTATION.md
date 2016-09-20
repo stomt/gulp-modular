@@ -24,6 +24,7 @@ Open the file and customize the tasks to match your specific project requirement
     * [statics](#statics)
     * [images](#images)
     * [fonts](#fonts)
+    * [markdown](#markdown)
     * [scripts](#scripts)
     * [styles](#styles)
 * [Serving](#serving)
@@ -109,6 +110,17 @@ Optional task fonts collects specified fonts and stores them in a dedicated dist
 
 * **src** `='app/fonts/**/*.{otf,eot,svg,ttf,woff}'` glob that points to all fonts
 * **dest** `='dist/fonts/'` destination of the font files
+
+### markdown
+Optional task markdown converts markdown to html and applies styles. Basic setup to generate a static site.
+
+* **src** `='src/content/**/*.md'` glob that points to all content files
+* **dest** `='dist/'` destination of the generated html files
+* **layouts** `='{}'` adds layout engine configuration
+    * **src** `='src/layouts'` path where the layouts can be found
+    * **partials** `='src/layouts/partials'` path where partial layouts can be found
+    * **engine** `='handlebars'` any layout engine supported by consolidate.js
+    * **layout** `='default.hbs'` default layout to apply when none is specified in the markdown frontmatter
 
 ### scripts
 Optional task scripts collects scripts, runs several transformations, concatenates everything and stores them in a dedicated distribution folder.
