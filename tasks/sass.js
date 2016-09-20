@@ -34,7 +34,7 @@ module.exports = function(gulp, config, browserSync) {
       .pipe(sourceMaps.write(config.build.sourceMapPath))
       .pipe(gulp.dest(config.styles.dest))
       .pipe(browserSync.stream({match: '**/*.css'}))
-      .pipe(gulpif(config.build.rev, rev.manifest({cwd: config.statics.dest, merge: true})))
-      .pipe(gulpif(config.build.rev, gulp.dest(config.statics.dest)));
+      .pipe(gulpif(config.build.rev, rev.manifest({cwd: config.styles.dest, merge: true})))
+      .pipe(gulpif(config.build.rev, gulp.dest(config.styles.dest)));
   });
 };
