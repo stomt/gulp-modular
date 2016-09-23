@@ -141,6 +141,7 @@ var config = {
   //// task [`jshint`] lints code with respect to your `.jshintrc` files
   //jshint: {
   //  src: 'app/components/**/*.js' // glob specifying what to lint
+  //  reporter: '' // additional reporter e.g. to fail on warnings
   //},
 
 };

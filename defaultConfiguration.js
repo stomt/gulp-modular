@@ -89,6 +89,7 @@ module.exports = {
     repo: {}
   },
   jshint: {
-    src: 'app/components/**/*.js'
+    src: 'app/components/**/*.js',
+    reporter: ''
   }
 };

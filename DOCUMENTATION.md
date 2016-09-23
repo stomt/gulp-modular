@@ -170,4 +170,4 @@ Optional task mavenDeploy allows to add maven packages to a remote server.
 Optional task jshint lints code with respect to your `.jshintrc` files.
 
 * **src** `='app/components/**/*.js'` glob specifying what to lint
-
+* **reporter** `=''` additional reporter e.g. to fail on warnings
