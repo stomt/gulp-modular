@@ -107,7 +107,7 @@ Optional task images collects, flattens and minifies graphics before storing the
 ### fonts
 Optional task fonts collects specified fonts and stores them in a dedicated distribution folder.
 
-* **src** `='app/fonts/**/*.{otf,eot,svg,ttf,woff}'` glob that points to all fonts
+* **src** `='app/fonts/**/*.{otf,eot,svg,ttf,woff,woff2}'` glob that points to all fonts
 * **dest** `='dist/fonts/'` destination of the font files
 
 ### scripts

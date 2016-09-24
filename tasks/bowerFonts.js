@@ -7,7 +7,7 @@ var bowerFiles = require('main-bower-files'),
   _ = require('underscore');
 
 var fontsFilter = {
-  filter: /\.(otf|eot|svg|ttf|woff)/i
+  filter: /\.(otf|eot|svg|ttf|woff|woff2)/i
 };
 
 module.exports = function(gulp, config) {

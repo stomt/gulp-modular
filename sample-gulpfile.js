@@ -75,7 +75,7 @@ var config = {
 
   //// task [`fonts`] collects fonts and stores them in a dedicated distribution folder
   //fonts: {
-  //  src: 'app/fonts/**/*.{otf,eot,svg,ttf,woff}', // glob that points to all fonts
+  //  src: 'app/fonts/**/*.{otf,eot,svg,ttf,woff,woff2}', // glob that points to all fonts
   //  dest: 'dist/fonts/' // destination of the font files
   //},
 
