@@ -6,6 +6,8 @@ var extend = require('extend'),
 module.exports = function(gulp, config) {
   gulp.task('maven-deploy', ['build'], function() {
     gulp.src(config.mavenDeploy.src)
-      .pipe(maven.deploy(extend({}, config.mavenDeploy.config, {repositories: config.mavenDeploy.repo})));
+      .pipe(maven.deploy({
+        config: extend({}, config.mavenDeploy.config, {repositories: config.mavenDeploy.repo})
+      }));
   });
 };

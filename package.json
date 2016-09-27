@@ -49,7 +49,7 @@
     "gulp-imagemin": "^3.0.3",
     "gulp-inject": "^4.1.0",
     "gulp-jshint": "^2.0.0",
-    "gulp-maven-deploy": "^1.0.1",
+    "gulp-maven-deploy": "^0.2.2",
     "gulp-minify-html": "^1.0.3",
     "gulp-minify-inline": "^0.2.0",
     "gulp-newer": "^1.1.0",
