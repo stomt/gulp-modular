@@ -43,6 +43,10 @@ module.exports = function(gulp, userConfig) {
     require('./tasks/jshint')(gulp, config);
   }
 
+  if (config.markdown) {
+    require('./tasks/markdown')(gulp, config);
+  }
+
   if (config.mavenDeploy) {
     require('./tasks/mavenDeploy')(gulp, config);
   }

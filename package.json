@@ -33,6 +33,7 @@
     "connect-history-api-fallback": "^1.1.0",
     "del": "^2.2.0",
     "extend": "^3.0.0",
+    "fs-readdir-recursive": "^1.0.0",
     "gulp": "^3.9.0",
     "gulp-angular-filesort": "^1.1.1",
     "gulp-autoprefixer": "^3.1.0",
@@ -43,12 +44,15 @@
     "gulp-concat": "^2.5.2",
     "gulp-debug": "^2.0.1",
     "gulp-flatten": "^0.3.1",
+    "gulp-front-matter": "^1.3.0",
     "gulp-gh-pages": "^0.5.2",
     "gulp-if": "^2.0.0",
     "gulp-iife": "^0.3.0",
     "gulp-imagemin": "^3.0.3",
     "gulp-inject": "^4.1.0",
     "gulp-jshint": "^2.0.0",
+    "gulp-layout": "0.0.4",
+    "gulp-markdown": "^1.2.0",
     "gulp-maven-deploy": "^1.0.1",
     "gulp-minify-html": "^1.0.3",
     "gulp-minify-inline": "^0.2.0",
@@ -70,5 +74,6 @@
     "merge-stream": "^1.0.0",
     "node-sass-globbing": "^0.0.23",
     "underscore": "^1.8.3"
-  }
+  },
+  "devDependencies": {}
 }
