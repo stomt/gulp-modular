@@ -17,7 +17,13 @@ var config = {
     //  rev: false, // append random revision postfixes to generated files
     //  bowerDebug: false, // prints gulp pipes from included bower files
     //  sourceMapPath: '.', // default (relative) path to place sourcemaps
-    //  index: 'app/index.html' // defines the root html file
+    //  index: 'app/index.html', // defines the root html file
+    //  transformJS: function (filepath) { // transform filename of JS files
+    //    return '<script src="' + filepath + '?' + version + '"></script>';
+    //  },
+    //  transformCSS: function (filepath) { // transform filename of CSS files
+    //    return '<link rel="stylesheet" href="' + filepath + '?' + version + '">';
+    //}
   },
 
   //// task `preprocess` automatically injects variables into your files

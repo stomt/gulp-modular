@@ -51,6 +51,8 @@ Executes the tasks (if activated): `index`, `images`, `statics`
 * **bowerjson** `='bower.json'` path to the `bower.json` file, enables rebuild and reload when dependencies change 
 * **cdn** `=''` path to cdn host of static files, files injected to index will be prefixed with it
 * **index** `='app/index.html'` path to the root html file
+* **transformCSS** `= undefined` [callback](https://github.com/klei/gulp-inject#injecting-with-custom-transform-function-with-default-fallback) to transform filename of CSS files
+* **transformJS** `= undefined` [callback](https://github.com/klei/gulp-inject#injecting-with-custom-transform-function-with-default-fallback) to transform filename of JS files
 
 ### preprocess
 Optional task in the configuration. It defines where to apply the preprocessor.

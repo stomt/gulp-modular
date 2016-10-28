@@ -8,7 +8,9 @@ module.exports = {
     bowerDebug: false,
     sourceMapPath: '.',
     cdn: '',
-    index: 'app/index.html'
+    index: 'app/index.html',
+    transformCSS: undefined,
+    transformJS: undefined
   },
   preprocess: {
     apply: {

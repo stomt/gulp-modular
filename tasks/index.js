@@ -26,9 +26,19 @@ module.exports = function(gulp, config) {
       addPrefix: config.build.cdn
     };
 
+    var injectOptionsCSS = extend({}, injectOptions);
+    var injectOptionsJS = extend({}, injectOptions);
+
+    if (config.build.transformCSS) {
+      injectOptionsCSS.transform = config.build.transformCSS;
+    }
+    if (config.build.transformJS) {
+      injectOptionsJS.transform = config.build.transformJS;
+    }
+
     return gulp.src(config.build.index)
-      .pipe(gulpInject(gulp.src(cssFiles, srcOptions), injectOptions))
-      .pipe(gulpInject(gulp.src(jsFiles, srcOptions), extend({}, injectOptions)))
+      .pipe(gulpInject(gulp.src(cssFiles, srcOptions), injectOptionsCSS))
+      .pipe(gulpInject(gulp.src(jsFiles, srcOptions), injectOptionsJS))
       .pipe(gulpif(config.preprocess && config.preprocess.apply.index, preprocess(config.preprocess)))
       .pipe(minifyInline())
       .pipe(minifyHtml({
