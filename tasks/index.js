@@ -40,7 +40,9 @@ module.exports = function(gulp, config) {
       .pipe(gulpInject(gulp.src(cssFiles, srcOptions), injectOptionsCSS))
       .pipe(gulpInject(gulp.src(jsFiles, srcOptions), injectOptionsJS))
       .pipe(gulpif(config.preprocess && config.preprocess.apply.index, preprocess(config.preprocess)))
-      .pipe(minifyInline())
+      .pipe(minifyInline({
+        jsSelector: 'script[type!="application/ld+json"]'
+      }))
       .pipe(minifyHtml({
         empty: true,
         spare: true,
