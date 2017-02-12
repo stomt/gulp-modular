@@ -29,6 +29,7 @@ module.exports = function(gulp, config) {
        var configScripts = ngConstant({
          constants: config.scripts.ngConstant.constants,
          name: config.scripts.ngConstant.name,
+         wrap: false,
          stream: true
        });
 
