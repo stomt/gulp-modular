@@ -7,7 +7,8 @@ module.exports = function(gulp, config, browserSync) {
     if (config.serve.proxy) {
       browserSync.init({
         proxy: config.serve.proxy,
-        port: config.serve.port
+        port: config.serve.port,
+        open: false
       });
     } else {
       browserSync.init({
