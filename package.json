@@ -53,7 +53,7 @@
     "gulp-minify-inline": "^0.2.0",
     "gulp-newer": "^1.1.0",
     "gulp-ng-annotate": "^2.0.0",
-    "gulp-ng-constant": "^2.0.0",
+    "gulp-ng-constant": "^2.0.0-2",
     "gulp-ng-html2js": "^0.2.0",
     "gulp-plumber": "^1.0.1",
     "gulp-preprocess": "^2.0.0",
