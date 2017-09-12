@@ -6,6 +6,7 @@ var extend = require('extend'),
   minifyHtml = require('gulp-minify-html'),
   preprocess = require('gulp-preprocess'),
   gulpif = require('gulp-if'),
+  rename = require('gulp-rename'),
   _ = require('underscore');
 
 module.exports = function(gulp, config) {
@@ -48,6 +49,7 @@ module.exports = function(gulp, config) {
         spare: true,
         quotes: true
       }))
+      .pipe(rename('index.html'))
       .pipe(gulp.dest(config.build.dest));
   }
 
