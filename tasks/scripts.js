@@ -6,6 +6,7 @@ var sourceMaps = require('gulp-sourcemaps'),
   ngConstant = require('gulp-ng-constant'),
   minifyHtml = require('gulp-minify-html'),
   ngHtml2Js = require('gulp-ng-html2js'),
+  flatten = require('gulp-flatten'),
   concat = require('gulp-concat'),
   gulpif = require('gulp-if'),
   rev = require('gulp-rev'),
@@ -40,6 +41,7 @@ module.exports = function(gulp, config) {
     if (config.scripts.ng2html) {
       var partials = gulp.src(config.scripts.ng2html.src)
         .pipe(gulpif(config.preprocess && config.preprocess.apply.html, preprocess(config.preprocess)))
+        .pipe(gulpif(config.scripts.ng2html.flatten, flatten()))
         .pipe(minifyHtml({
           empty: true,
           spare: true,

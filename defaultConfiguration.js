@@ -55,6 +55,7 @@ module.exports = {
     ng2html: {
       src: 'app/components/**/*.html',
       prefix: 'components/',
+      flatten: false,
       name: 'app.templates'
     },
     ngConstant: {

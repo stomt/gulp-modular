@@ -120,6 +120,7 @@ Optional task scripts collects scripts, runs several transformations, concatenat
 * **ng2html** `={}` adds ng2html and saves all html partials right into the AngularJS `$templateCache
     * **src** `='app/components/**/*.html'` glob that points to all partials
     * **prefix** `='components/'` prefix of the URL path
+    * **flatten** `=false` remove the URL path
     * **name** `='app.templates'` the module name that contains the partials
 * **ngConstant** `={}` adds ngConstant to dynamically add variables to your AngularJS app
     * **name** `='app.config'` the module name that contains the variables
