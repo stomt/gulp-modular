@@ -12,14 +12,17 @@ var bowerFiles = require('main-bower-files'),
 
 var isFirstRun = true;
 var vendorFile = 'vendor.css';
-var cssFilter = {
-  filter: /\.css$/i
-};
 
 module.exports = function(gulp, config) {
   var tasks = _.intersection(_.keys(gulp.tasks), ['bower:install', 'bower:prune']);
+  var bowerFilesOptions = {
+    paths: {
+      bowerJson: config.build.bowerjson
+    },
+    filter: /\.css$/i
+  };
   gulp.task('bowerStyles', tasks, function(done) {
-    gulp.src(bowerFiles(cssFilter))
+    gulp.src(bowerFiles(bowerFilesOptions))
       .pipe(gulpif(config.build.bowerDebug, debug()))
       .pipe(sourceMaps.init())
       .pipe(gulpif(isFirstRun, newer(config.bowerStyles.dest + vendorFile)))

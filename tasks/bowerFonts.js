@@ -6,14 +6,16 @@ var bowerFiles = require('main-bower-files'),
   debug = require('gulp-debug'),
   _ = require('underscore');
 
-var fontsFilter = {
-  filter: /\.(otf|eot|svg|ttf|woff|woff2)/i
-};
-
 module.exports = function(gulp, config) {
   var tasks = _.intersection(_.keys(gulp.tasks), ['bower:install', 'bower:prune']);
+  var bowerFilesOptions = {
+    paths: {
+      bowerJson: config.build.bowerjson
+    },
+    filter: /\.(otf|eot|svg|ttf|woff|woff2)/i
+  };
   gulp.task('bowerFonts', tasks, function() {
-    return gulp.src(bowerFiles(fontsFilter))
+    return gulp.src(bowerFiles(bowerFilesOptions))
       .pipe(gulpif(config.build.bowerDebug, debug()))
       .pipe(gulpif(config.build.rev, rev()))
       .pipe(gulp.dest(config.bowerFonts.dest))
