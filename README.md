@@ -1,5 +1,7 @@
 <img align="right" src="gulp-modular.png">
+
 # gulp-modular [![npm version](https://badge.fury.io/js/gulp-modular.svg)](https://badge.fury.io/js/gulp-modular)
+
 Boilerplate gulp tasks for quick project setup.
 
 ## What is gulp-modular?
