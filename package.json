@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ONE-LOGIC/gulp-modular"
+    "url": "https://github.com/stomt/gulp-modular"
   },
   "keywords": [
     "gulp"
@@ -25,9 +25,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ONE-LOGIC/gulp-modular/issues"
+    "url": "https://github.com/stomt/gulp-modular/issues"
   },
-  "homepage": "https://github.com/ONE-LOGIC/gulp-modular",
+  "homepage": "https://github.com/stomt/gulp-modular",
   "dependencies": {
     "browser-sync": "^2.9.1",
     "connect-history-api-fallback": "^1.1.0",
