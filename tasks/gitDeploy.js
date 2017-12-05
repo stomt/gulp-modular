@@ -7,9 +7,7 @@ module.exports = function(gulp, config) {
   gulp.task('git-deploy', ['build'], function() {
     if (config.gitDeploy.branch) {
       return gulp.src(config.gitDeploy.src + '/**/*')
-        .pipe(ghPages({
-          branch: config.gitDeploy.branch
-        }));
+        .pipe(ghPages(config.gitDeploy));
     } else {
       gutil.log('No deploy branch defined', gutil.colors.magenta('Did not deploy!'));
       return false;
